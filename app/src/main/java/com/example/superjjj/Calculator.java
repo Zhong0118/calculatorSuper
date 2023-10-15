@@ -9,6 +9,26 @@ public class Calculator {
     BasicLogical basicLogical;
 
     public double cal(String expression,int per) {
+        // 右括号自动补全
+        int leftNum = 0;
+        int rightNum = 0;
+        for (int i = 0; i < expression.length(); i++) {
+            if (expression.charAt(i) == '(') {
+                leftNum++;
+            } else if (expression.charAt(i) == ')') {
+                rightNum++;
+            }
+        }
+
+        int missingNum = leftNum - rightNum; // 缺失的 ) 数量
+        StringBuilder stringBuilder = new StringBuilder(expression);
+        while (missingNum > 0) {
+            stringBuilder.append(')');
+            missingNum--;
+        }
+
+        expression = stringBuilder.toString();
+
         expression = expression.replace(" ", "");                 //去掉expression中的所有空格
         expression = expression.replace("π", String.valueOf(Math.PI));          //替换π
         expression = expression.replace("e", String.valueOf(Math.exp(1)));      //替换自然指数e
@@ -24,71 +44,73 @@ public class Calculator {
 
             //1.获取()内运算式并计算出结果，此时假设()不再包含复杂的科学运算
             // 最右边的（
-            int beginIndex = expression.lastIndexOf("(");
+            int lastLeftBr = expression.lastIndexOf("(");
             // 对应的）
-            int endIndex = getRightBracket(expression, beginIndex);
+            int lastRightBr = getRightBracket(expression, lastLeftBr);
             // 括号内的表达式，包括括号
-            String subMath = expression.substring(beginIndex + 1, endIndex);
+            String subExpression = expression.substring(lastLeftBr + 1, lastRightBr);
             // 想得出括号内的结果
-            double subResult = basicLogical.calculate(subMath);
+            double subResult = basicLogical.calculate(subExpression);
             if (subResult == Double.MAX_VALUE) //每次计算要判断是否出现 expression error
                 return Double.MAX_VALUE;
 
-            //2.获取scienceOper字符串
+            //2.获取someSuperOper字符串
             // 继续往左跑
-            int i = beginIndex - 1;
+            int i = lastLeftBr - 1;
             while (i >= 0 && !isOper(expression.charAt(i))) { //向左寻找
                 i--;
             } // 此时的特殊运算符就是对应的高级运算符
-            String scienceOper = expression.substring(i + 1, beginIndex);
+            String someSuperOper = expression.substring(i + 1, lastLeftBr);
 
-            //3.匹配scienceOper进行科学运算，并替换相应部分
-            String tempMath; // 临时的表达式
+
+
+            //3.匹配someSuperOper进行科学运算，并替换相应部分
+            String tempExpression; // 临时的表达式
             double tempResult; // 临时结果
 
-            switch (scienceOper) {
+            switch (someSuperOper) {
                 case "sin":
-                    tempMath = "sin(" + subMath + ")";
-                    double degreesSin = Double.parseDouble(subMath); // 获取用户输入的角度值
+                    tempExpression = "sin(" + subExpression + ")";
+                    double degreesSin = Double.parseDouble(subExpression); // 获取用户输入的角度值
                     double radiansSin = Math.toRadians(degreesSin); // 转换为弧度值
                     tempResult = Math.sin(radiansSin); // 计算sin值
-                    expression = expression.replace(tempMath, String.valueOf(tempResult));
+                    expression = expression.replace(tempExpression, String.valueOf(tempResult));
                     break;
                 case "cos":
-                    tempMath = "cos(" + subMath + ")";
-                    double degreesCos = Double.parseDouble(subMath); // 获取用户输入的角度值
+                    tempExpression = "cos(" + subExpression + ")";
+                    double degreesCos = Double.parseDouble(subExpression); // 获取用户输入的角度值
                     double radiansCos = Math.toRadians(degreesCos); // 转换为弧度值
                     tempResult = Math.cos(radiansCos); // 计算cos值
-                    expression = expression.replace(tempMath, String.valueOf(tempResult));
+                    expression = expression.replace(tempExpression, String.valueOf(tempResult));
                     break;
                 case "tan":
-                    tempMath = "tan(" + subMath + ")";
-                    double degreesTan = Double.parseDouble(subMath); // 获取用户输入的角度值
+                    tempExpression = "tan(" + subExpression + ")";
+                    double degreesTan = Double.parseDouble(subExpression); // 获取用户输入的角度值
                     double radiansTan = Math.toRadians(degreesTan); // 转换为弧度值
                     tempResult = Math.tan(radiansTan); // 计算tan值
-                    expression = expression.replace(tempMath, String.valueOf(tempResult));
+                    expression = expression.replace(tempExpression, String.valueOf(tempResult));
                     break;
 
                 case "ln":
-                    tempMath = "ln(" + subMath + ")";
+                    tempExpression = "ln(" + subExpression + ")";
                     tempResult = Math.log(subResult);
-                    expression = expression.replace(tempMath, String.valueOf(tempResult));
+                    expression = expression.replace(tempExpression, String.valueOf(tempResult));
                     break;
                 case "lg":
-                    tempMath = "lg(" + subMath + ")";
+                    tempExpression = "lg(" + subExpression + ")";
                     tempResult = Math.log10(subResult);
-                    expression = expression.replace(tempMath, String.valueOf(tempResult));
+                    expression = expression.replace(tempExpression, String.valueOf(tempResult));
                     break;
                 case "√":
-                    tempMath = "√(" + subMath + ")";
+                    tempExpression = "√(" + subExpression + ")";
                     tempResult = Math.sqrt(subResult);
-                    expression = expression.replace(tempMath, String.valueOf(tempResult));
+                    expression = expression.replace(tempExpression, String.valueOf(tempResult));
                     break;
                 default:
                     break;
             }
         }
-        
+
         while(expression.contains("!")){
             String reg = "([0-9]+)!";
             Pattern p=Pattern.compile(reg);
@@ -132,13 +154,21 @@ public class Calculator {
     }
 
     private int getRightBracket(String math, int begin) {
-        int i;
-        for (i = begin; i < math.length(); i++) {
-            if (math.charAt(i) == ')')
-                break;
+        int count = 0;
+        for (int i = begin; i < math.length(); i++) {
+            char c = math.charAt(i);
+            if (c == '(') {
+                count++;
+            } else if (c == ')') {
+                count--;
+                if (count == 0) {
+                    return i;
+                }
+            }
         }
-        return i;
+        return -1; // 没有匹配的右括号，返回-1
     }
+
 
     private boolean isOper(char c) {
         return c == '+' || c == '-' || c == '×' || c == '÷' || c == '(';

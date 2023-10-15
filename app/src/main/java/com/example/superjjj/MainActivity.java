@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (equal_flag){
+                if (equal_flag){ // 如果成功计算过一次的话，expression清空
                     expression = "";
                     equal_flag = false;
                 }
@@ -287,7 +287,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (equal_flag) {
-                    expression = "";
                     equal_flag = false;
                 }
                 if (expression.length() == 0) {                                //1.为空，+0.
@@ -307,7 +306,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (equal_flag) {
-                    expression = "";
                     equal_flag = false;
                 }
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
@@ -331,7 +329,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (equal_flag) {
-                    expression = "";
                     equal_flag = false;
                 }
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
@@ -348,7 +345,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (equal_flag) {
-                    expression = "";
                     equal_flag = false;
                 }
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
@@ -365,7 +361,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (equal_flag) {
-                    expression = "";
                     equal_flag = false;
                 }
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
@@ -382,7 +377,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (equal_flag) {
-                    expression = "";
                     equal_flag = false;
                 }
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
@@ -399,7 +393,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (equal_flag) {
-                    expression = "";
                     equal_flag = false;
                 }
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
@@ -416,7 +409,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (equal_flag) {
-                    expression = "";
                     equal_flag = false;
                 }
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
@@ -433,7 +425,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (equal_flag) {
-                    expression = "";
                     equal_flag = false;
                 }
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
@@ -450,7 +441,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (equal_flag) {
-                    expression = "";
                     equal_flag = false;
                 }
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
@@ -608,7 +598,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     if (equal_flag){
-                        expression = "";
                         equal_flag = false;
                     }
                     if (expression.length() == 0){
@@ -630,13 +619,15 @@ public class MainActivity extends AppCompatActivity {
         left_br.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isNumber(expression.charAt(expression.length() - 1))){
+                if (equal_flag){
+                    equal_flag = false;
+                }
+                if (!expression.isEmpty() && isNumber(expression.charAt(expression.length() - 1))){
                     expression += "×" +"(";
-
                 } else {
                     expression += "(";
-                    input.setText(expression);
                 }
+                input.setText(expression);
             }
         });
         right_br.setOnClickListener(new View.OnClickListener() {
@@ -646,8 +637,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "必须在数字的后面", Toast.LENGTH_SHORT).show();
                 } else {
                     expression += ")";
-                    input.setText(expression);
                 }
+                input.setText(expression);
             }
         });
         reciprocal.setOnClickListener(new View.OnClickListener() {

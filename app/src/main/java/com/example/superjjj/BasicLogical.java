@@ -52,7 +52,7 @@ public class BasicLogical {
         }
 
         if (operandStack.size() != 1 || !operatorStack.isEmpty()) {
-            throw new IllegalArgumentException("Invalid expression");
+            return Double.MAX_VALUE;
         }
 
         return operandStack.pop();
