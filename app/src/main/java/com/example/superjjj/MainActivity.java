@@ -1,6 +1,7 @@
 package com.example.superjjj;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.superjjj.SwitchButton;
 
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
@@ -9,7 +10,9 @@ import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ScrollView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +20,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private boolean isNormalLayout = true;
+    private SwitchButton switchButton;
     private View normalKeyboardLayout; // 简单布局
     private View superKeyboardLayout; // 复杂布局
     private ScrollView scrollView;
@@ -48,8 +52,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button change = findViewById(R.id.change_btn);
-
         scrollView = findViewById(R.id.scrollView);
         input = findViewById(R.id.input_view);
         output = findViewById(R.id.output_view);
@@ -84,11 +86,14 @@ public class MainActivity extends AppCompatActivity {
         normalKeyboardLayout = findViewById(R.id.normalKeyboardLayout);
         superKeyboardLayout = findViewById(R.id.superKeyboardLayout);
 
-        change.setOnClickListener(new View.OnClickListener() {
+        switchButton = findViewById(R.id.change_btn);
+        // 设置开关状态改变的监听器
+        switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 switchView();
             }
+
         });
 
         button0 = findViewById(R.id.number0);
@@ -726,6 +731,7 @@ public class MainActivity extends AppCompatActivity {
             ObjectAnimator fadeIn = ObjectAnimator.ofFloat(superKeyboardLayout, "alpha", 0f, 1f);
             fadeIn.setDuration(300); // 设置动画持续时间
             fadeIn.start();
+            Toast.makeText(MainActivity.this, "super_page", Toast.LENGTH_SHORT).show();
         } else {
             // 从当前视图渐变消失
             ObjectAnimator fadeOut = ObjectAnimator.ofFloat(superKeyboardLayout, "alpha", 1f, 0f);
@@ -739,6 +745,7 @@ public class MainActivity extends AppCompatActivity {
             ObjectAnimator fadeIn = ObjectAnimator.ofFloat(normalKeyboardLayout, "alpha", 0f, 1f);
             fadeIn.setDuration(300); // 设置动画持续时间
             fadeIn.start();
+            Toast.makeText(MainActivity.this, "normal_page", Toast.LENGTH_SHORT).show();
         }
         isNormalLayout = !isNormalLayout;
     }
@@ -749,4 +756,5 @@ public class MainActivity extends AppCompatActivity {
     private boolean isOpe(char c){
         return c == '+' || c == '-' || c == '×' || c == '÷';
     }
+
 }
