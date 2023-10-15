@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:theme="@android:style/Theme.Black.NoTitleBar"
+    tools:context=".MainActivity"
+    tools:ignore="NewApi">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calculator"
+            android:textSize="30dp"
+            android:layout_centerInParent="true"/>
+        <Button
+            android:id="@+id/change_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="change" />
+    </RelativeLayout>
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#000" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:descendantFocusability="blocksDescendants"
+        tools:ignore="MissingConstraints"
+        android:layout_gravity="bottom">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/input_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|bottom"
+                android:textColor="@color/button_one"
+                android:textSize="40sp" />
+        </FrameLayout>
+    </ScrollView>
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#000" />
+
+    <TextView
+        android:id="@+id/output_view"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:textColor="#c0c0c0"
+        android:textSize="40sp"
+        android:layout_marginBottom="7dp"/>
+    <!-- Content of normal_keyboard.xml -->
+    <include layout="@layout/normal_keyboard"
+        android:id="@+id/normalKeyboardLayout"
+        android:visibility="visible" />
+
+    <!-- Content of super_keyboard.xml -->
+    <include layout="@layout/super_keyboard"
+        android:id="@+id/superKeyboardLayout"
+        android:visibility="gone"/>
+
+</LinearLayout>

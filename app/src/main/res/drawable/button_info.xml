@@ -1,0 +1,16 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 按钮被点击时的样式 -->
+    <item android:state_pressed="true">
+        <shape>
+            <corners android:radius="10dp" /> <!-- 设置圆角的半径 -->
+            <solid android:color="#555555" /> <!-- 设置点击时的背景颜色（较深灰色） -->
+        </shape>
+    </item>
+    <!-- 默认状态下的样式 -->
+    <item>
+        <shape>
+            <corners android:radius="10dp" /> <!-- 设置圆角的半径 -->
+            <solid android:color="#CCCCCC" /> <!-- 设置默认状态下的背景颜色（浅灰色） -->
+        </shape>
+    </item>
+</selector>
