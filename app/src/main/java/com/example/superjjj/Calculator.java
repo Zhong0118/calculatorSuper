@@ -88,18 +88,7 @@ public class Calculator {
                     break;
             }
         }
-
-        while (expression.contains("(-")){
-            String regex = "\\((-?\\d+\\.?\\d*)\\)";
-            Pattern pattern = Pattern.compile(regex);
-            Matcher matcher = pattern.matcher(expression);
-
-            while (matcher.find()) {
-                double number = Double.parseDouble(matcher.group(1));
-                double negativeNumber = -number;
-                expression = expression.replace(matcher.group(), String.valueOf(negativeNumber));
-            }
-        }
+        
         while(expression.contains("!")){
             String reg = "([0-9]+)!";
             Pattern p=Pattern.compile(reg);
