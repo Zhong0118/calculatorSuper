@@ -1,4 +1,4 @@
-package com.example.superjjj;
+package com.example.superjjj.util;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,6 +9,8 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.CompoundButton;
+
+import com.example.superjjj.R;
 
 public class SwitchButton extends View {
 

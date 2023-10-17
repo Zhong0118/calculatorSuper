@@ -1,7 +1,9 @@
 package com.example.superjjj;
 
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.superjjj.SwitchButton;
+
+import com.example.superjjj.util.SwitchButton;
+import com.example.superjjj.util.ToastUtil;
 
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
@@ -12,11 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ScrollView;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private boolean isNormalLayout = true;
@@ -40,9 +39,6 @@ public class MainActivity extends AppCompatActivity {
     Button[] buttons = new Button[9];
     Button[] buttonss = new Button[9];
     Button[] superBtn = new Button[6];
-
-
-
 
 
     private boolean equal_flag = false; //设置flag值判断是否需要清空expression进行新的运算
@@ -184,31 +180,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
     private void initInput() {
         input.setMovementMethod(ScrollingMovementMethod.getInstance()); //内容自动滚动到最新的一行
         input.setTextIsSelectable(true); //长按复制
     }
+
     private void initNumBtns() {
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (equal_flag){ // 如果成功计算过一次的话，expression清空
+                if (equal_flag) { // 如果成功计算过一次的话，expression清空
                     expression = "";
                     equal_flag = false;
                 }
-                if (expression.length() == 0){
+                if (expression.length() == 0) {
                     expression += 0;
-                } else if (expression.length() == 1){
-                    if (expression.charAt(0) == '0'){
+                } else if (expression.length() == 1) {
+                    if (expression.charAt(0) == '0') {
                         expression += "";
-                        Toast.makeText(MainActivity.this, "不可输入0", Toast.LENGTH_SHORT).show();
-                    } else if (isNumber(expression.charAt(0)) && expression.charAt(0) != '0'){
+                        ToastUtil.showShort(MainActivity.this, "不可输入0");
+                    } else if (isNumber(expression.charAt(0)) && expression.charAt(0) != '0') {
                         expression += "0";
                     }
                 } else if (!isNumber(expression.charAt(expression.length() - 2)) &&
-                        expression.charAt(expression.length() - 1) == '0'){
+                        expression.charAt(expression.length() - 1) == '0') {
                     expression += "";
                 } else {
                     expression += "0";
@@ -219,21 +214,21 @@ public class MainActivity extends AppCompatActivity {
         button0s.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (equal_flag){
+                if (equal_flag) {
                     expression = "";
                     equal_flag = false;
                 }
-                if (expression.length() == 0){
+                if (expression.length() == 0) {
                     expression += 0;
-                } else if (expression.length() == 1){
-                    if (expression.charAt(0) == '0'){
+                } else if (expression.length() == 1) {
+                    if (expression.charAt(0) == '0') {
                         expression += "";
-                        Toast.makeText(MainActivity.this, "不可输入0", Toast.LENGTH_SHORT).show();
-                    } else if (isNumber(expression.charAt(0)) && expression.charAt(0) != '0'){
+                        ToastUtil.showShort(MainActivity.this, "不可输入0");
+                    } else if (isNumber(expression.charAt(0)) && expression.charAt(0) != '0') {
                         expression += "0";
                     }
                 } else if (!isNumber(expression.charAt(expression.length() - 2)) &&
-                        expression.charAt(expression.length() - 1) == '0'){
+                        expression.charAt(expression.length() - 1) == '0') {
                     expression += "";
                 } else {
                     expression += "0";
@@ -241,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
                 input.setText(expression);
             }
         });
-        for (final Button button:buttons) {
+        for (final Button button : buttons) {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -253,8 +248,8 @@ public class MainActivity extends AppCompatActivity {
 
                     if (expression.length() == 0) {
                         expression += button.getText().toString();
-                    } else if (expression.matches("^.*[+\\-×÷]+0$")){
-                        expression = expression.substring(0,expression.length() - 1) + button.getText().toString();
+                    } else if (expression.matches("^.*[+\\-×÷]+0$")) {
+                        expression = expression.substring(0, expression.length() - 1) + button.getText().toString();
                     } else {
                         //math的最后一个字符是：1-9, oper, (, .
                         char ch = expression.charAt(expression.length() - 1);
@@ -265,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-        for (final Button button:buttonss) {
+        for (final Button button : buttonss) {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -276,8 +271,8 @@ public class MainActivity extends AppCompatActivity {
 
                     if (expression.length() == 0) {
                         expression += button.getText().toString();
-                    } else if (expression.matches("^.*[+\\-×÷]+0$")){
-                        expression = expression.substring(0,expression.length() - 1) + button.getText().toString();
+                    } else if (expression.matches("^.*[+\\-×÷]+0$")) {
+                        expression = expression.substring(0, expression.length() - 1) + button.getText().toString();
                     } else {
                         //math的最后一个字符是：1-9, oper, (, .
                         char ch = expression.charAt(expression.length() - 1);
@@ -302,7 +297,7 @@ public class MainActivity extends AppCompatActivity {
                     expression += ".";
                 } else {                                                    //4.除此之外，不加
                     expression += "";
-                    Toast.makeText(MainActivity.this, "不可连续输入小数点", Toast.LENGTH_SHORT).show();
+                    ToastUtil.showShort(MainActivity.this, "不可连续输入小数点0");
                 }
                 input.setText(expression);
             }
@@ -316,20 +311,21 @@ public class MainActivity extends AppCompatActivity {
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
                     expression += "0.";
                 } else if (isOpe(expression.charAt(expression.length() - 1))
-                || expression.charAt(expression.length() - 1) == '(') {  //2.mathNow的最后一个字符为oper，+0.
+                        || expression.charAt(expression.length() - 1) == '(') {  //2.mathNow的最后一个字符为oper，+0.
                     expression += "0.";
                 } else if (isNumber(expression.charAt(expression.length() - 1))) {   //3.mathNow的最后一个字符为num，+.
                     expression += ".";
                 } else {                                                    //4.除此之外，不加
                     expression += "";
-                    Toast.makeText(MainActivity.this, "不可连续输入小数点", Toast.LENGTH_SHORT).show();
+                    ToastUtil.showShort(MainActivity.this, "不可连续输入小数点0");
+
                 }
                 input.setText(expression);
             }
         });
     }
 
-    private void initBaseOpers(){
+    private void initBaseOpers() {
         div.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -337,9 +333,9 @@ public class MainActivity extends AppCompatActivity {
                     equal_flag = false;
                 }
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
-                    Toast.makeText(MainActivity.this, "不可在空公式中输入运算符", Toast.LENGTH_SHORT).show();
+                    ToastUtil.showShort(MainActivity.this, "不可在空公式中输入运算符");
                 } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0,expression.length() - 1) + div.getText().toString();
+                    expression = expression.substring(0, expression.length() - 1) + div.getText().toString();
                 } else {                                                    //4.除此之外，不加
                     expression += div.getText().toString();
                 }
@@ -355,7 +351,7 @@ public class MainActivity extends AppCompatActivity {
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
                     Toast.makeText(MainActivity.this, "不可在空公式中输入运算符", Toast.LENGTH_SHORT).show();
                 } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0,expression.length() - 1) + divs.getText().toString();
+                    expression = expression.substring(0, expression.length() - 1) + divs.getText().toString();
                 } else {                                                    //4.除此之外，不加
                     expression += divs.getText().toString();
                 }
@@ -371,7 +367,7 @@ public class MainActivity extends AppCompatActivity {
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
                     Toast.makeText(MainActivity.this, "不可在空公式中输入运算符", Toast.LENGTH_SHORT).show();
                 } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0,expression.length() - 1) + mul.getText().toString();
+                    expression = expression.substring(0, expression.length() - 1) + mul.getText().toString();
                 } else {                                                    //4.除此之外，不加
                     expression += mul.getText().toString();
                 }
@@ -387,7 +383,7 @@ public class MainActivity extends AppCompatActivity {
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
                     Toast.makeText(MainActivity.this, "不可在空公式中输入运算符", Toast.LENGTH_SHORT).show();
                 } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0,expression.length() - 1) + muls.getText().toString();
+                    expression = expression.substring(0, expression.length() - 1) + muls.getText().toString();
                 } else {                                                    //4.除此之外，不加
                     expression += muls.getText().toString();
                 }
@@ -403,7 +399,7 @@ public class MainActivity extends AppCompatActivity {
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
                     Toast.makeText(MainActivity.this, "不可在空公式中输入运算符", Toast.LENGTH_SHORT).show();
                 } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0,expression.length() - 1) + min.getText().toString();
+                    expression = expression.substring(0, expression.length() - 1) + min.getText().toString();
                 } else {                                                    //4.除此之外，不加
                     expression += min.getText().toString();
                 }
@@ -419,7 +415,7 @@ public class MainActivity extends AppCompatActivity {
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
                     Toast.makeText(MainActivity.this, "不可在空公式中输入运算符", Toast.LENGTH_SHORT).show();
                 } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0,expression.length() - 1) + mins.getText().toString();
+                    expression = expression.substring(0, expression.length() - 1) + mins.getText().toString();
                 } else {                                                    //4.除此之外，不加
                     expression += mins.getText().toString();
                 }
@@ -435,7 +431,7 @@ public class MainActivity extends AppCompatActivity {
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
                     Toast.makeText(MainActivity.this, "不可在空公式中输入运算符", Toast.LENGTH_SHORT).show();
                 } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0,expression.length() - 1) + add.getText().toString();
+                    expression = expression.substring(0, expression.length() - 1) + add.getText().toString();
                 } else {                                                    //4.除此之外，不加
                     expression += add.getText().toString();
                 }
@@ -449,9 +445,10 @@ public class MainActivity extends AppCompatActivity {
                     equal_flag = false;
                 }
                 if (expression.length() == 0) {                                //1.mathNow为空，+0.
-                    Toast.makeText(MainActivity.this, "不可在空公式中输入运算符", Toast.LENGTH_SHORT).show();
+                    ToastUtil.showShort(MainActivity.this, "不可在空公式中输入运算符");
+
                 } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0,expression.length() - 1) + add.getText().toString();
+                    expression = expression.substring(0, expression.length() - 1) + add.getText().toString();
                 } else {                                                    //4.除此之外，不加
                     expression += add.getText().toString();
                 }
@@ -480,77 +477,81 @@ public class MainActivity extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (expression.length() != 0){
+                if (expression.length() != 0) {
                     expression = expression.substring(0, expression.length() - 1);
                     input.setText(expression);
                 } else {
-                    Toast.makeText(MainActivity.this, "现在没有内容", Toast.LENGTH_SHORT).show();
+                    ToastUtil.showShort(MainActivity.this, "现在没有内容");
                 }
             }
         });
         backs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (expression.length() != 0){
+                if (expression.length() != 0) {
                     expression = expression.substring(0, expression.length() - 1);
                     input.setText(expression);
                 } else {
-                    Toast.makeText(MainActivity.this, "现在没有内容", Toast.LENGTH_SHORT).show();
+                    ToastUtil.showShort(MainActivity.this, "现在没有内容");
                 }
             }
         });
         percent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (expression.length() == 0){
-                    Toast.makeText(MainActivity.this, "不能这样加百分号", Toast.LENGTH_SHORT).show();
+                if (expression.length() == 0) {
+                    ToastUtil.showShort(MainActivity.this, "不能这样加百分号");
                     return;
                 }
-                if (isNumber(expression.charAt(expression.length() - 1))){
+                if (isNumber(expression.charAt(expression.length() - 1))) {
                     expression += percent.getText().toString();
                     input.setText(expression);
                 } else {
-                    Toast.makeText(MainActivity.this, "不能这样加百分号", Toast.LENGTH_SHORT).show();
+                    ToastUtil.showShort(MainActivity.this, "不能这样加百分号");
+
                 }
             }
         });
         percents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (expression.length() == 0){
-                    Toast.makeText(MainActivity.this, "不能这样加百分号", Toast.LENGTH_SHORT).show();
+                if (expression.length() == 0) {
+                    ToastUtil.showShort(MainActivity.this, "不能这样加百分号");
+
                     return;
                 }
-                if (isNumber(expression.charAt(expression.length() - 1))){
+                if (isNumber(expression.charAt(expression.length() - 1))) {
                     expression += percents.getText().toString();
                     input.setText(expression);
                 } else {
-                    Toast.makeText(MainActivity.this, "不能这样加百分号", Toast.LENGTH_SHORT).show();
+                    ToastUtil.showShort(MainActivity.this, "不能这样加百分号");
+
+
                 }
             }
         });
         symbol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (expression.length() == 0){
-                    Toast.makeText(MainActivity.this, "不能这样改变正负", Toast.LENGTH_SHORT).show();
+                if (expression.length() == 0) {
+                    ToastUtil.showShort(MainActivity.this, "不能这样改变正负");
                     return;
                 }
-                if (isNumber(expression.charAt(expression.length() - 1))){ // 如果前面是数字的话
+                if (isNumber(expression.charAt(expression.length() - 1))) { // 如果前面是数字的话
                     int i;
-                    for(i = expression.length() - 1;i >= 0; i--){
-                        if (!isNumber(expression.charAt(i)) || expression.charAt(i) == '.'){
+                    for (i = expression.length() - 1; i >= 0; i--) {
+                        if (!isNumber(expression.charAt(i)) || expression.charAt(i) == '.') {
                             break; // 此时的i的值是符号的位置，所以下面的substring要加一
                         }
                     }
                     // 把数据切开
-                    String before = expression.substring(0,i + 1);
+                    String before = expression.substring(0, i + 1);
                     String after = expression.substring(i + 1, expression.length()); //
                     expression = before + "(-" + after + ")";
                     input.setText(expression);
                 } // 此时是把正数变负数
-                else if (expression.matches("^.*\\(-[0123456789.]+\\)$")){
-                    String before = expression.substring(0,expression.lastIndexOf("(-"));
+                else if (expression.matches("^.*\\(-[0123456789.]+\\)$")) {
+                    String before = expression.substring(0, expression.lastIndexOf("(-"));
                     // 表示记录（-之前的所有数据
                     String after = expression.substring(expression.lastIndexOf("(-") + 2,
                             expression.length() - 1);
@@ -558,32 +559,34 @@ public class MainActivity extends AppCompatActivity {
                     expression = before + after;
                     input.setText(expression);
                 } else {
-                    Toast.makeText(MainActivity.this, "不能这样改变正负", Toast.LENGTH_SHORT).show();
+                    ToastUtil.showShort(MainActivity.this, "不能这样改变正负");
+
                 }
             }
         });
         symbols.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (expression.length() == 0){
-                    Toast.makeText(MainActivity.this, "不能这样改变正负", Toast.LENGTH_SHORT).show();
+                if (expression.length() == 0) {
+                    ToastUtil.showShort(MainActivity.this, "不能这样改变正负");
+
                     return;
                 }
-                if (isNumber(expression.charAt(expression.length() - 1))){ // 如果前面是数字的话
+                if (isNumber(expression.charAt(expression.length() - 1))) { // 如果前面是数字的话
                     int i;
-                    for(i = expression.length() - 1;i >= 0; i--){
-                        if (!isNumber(expression.charAt(i)) || expression.charAt(i) == '.'){
+                    for (i = expression.length() - 1; i >= 0; i--) {
+                        if (!isNumber(expression.charAt(i)) || expression.charAt(i) == '.') {
                             break; // 此时的i的值是符号的位置，所以下面的substring要加一
                         }
                     }
                     // 把数据切开
-                    String before = expression.substring(0,i + 1);
+                    String before = expression.substring(0, i + 1);
                     String after = expression.substring(i + 1, expression.length()); //
                     expression = before + "(-" + after + ")";
                     input.setText(expression);
                 } // 此时是把正数变负数
-                else if (expression.matches("^.*\\(-[0123456789.]+\\)$")){
-                    String before = expression.substring(0,expression.lastIndexOf("(-"));
+                else if (expression.matches("^.*\\(-[0123456789.]+\\)$")) {
+                    String before = expression.substring(0, expression.lastIndexOf("(-"));
                     // 表示记录（-之前的所有数据
                     String after = expression.substring(expression.lastIndexOf("(-") + 2,
                             expression.length() - 1);
@@ -591,30 +594,32 @@ public class MainActivity extends AppCompatActivity {
                     expression = before + after;
                     input.setText(expression);
                 } else {
-                    Toast.makeText(MainActivity.this, "不能这样改变正负", Toast.LENGTH_SHORT).show();
+                    ToastUtil.showShort(MainActivity.this, "不能这样改变正负");
+
                 }
             }
         });
     }
 
     private void initSuperFunction() {
-        for (final Button button : superBtn){
+        for (final Button button : superBtn) {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (equal_flag){
+                    if (equal_flag) {
                         equal_flag = false;
                     }
-                    if (expression.length() == 0){
+                    if (expression.length() == 0) {
                         expression += button.getText().toString() + "(";
                     } else {
                         char c = expression.charAt(expression.length() - 1);
-                        if (isOpe(c) || c == '('){
+                        if (isOpe(c) || c == '(') {
                             expression += button.getText().toString() + "(";
-                        } else if (isNumber(c)){
+                        } else if (isNumber(c)) {
                             expression += "×" + button.getText().toString() + "(";
                         } else {
-                            Toast.makeText(MainActivity.this,"不允许这样添加", Toast.LENGTH_SHORT).show();
+                            ToastUtil.showShort(MainActivity.this, "不允许这样添加");
+
                         }
                     }
                     input.setText(expression);
@@ -624,11 +629,11 @@ public class MainActivity extends AppCompatActivity {
         left_br.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (equal_flag){
+                if (equal_flag) {
                     equal_flag = false;
                 }
-                if (!expression.isEmpty() && isNumber(expression.charAt(expression.length() - 1))){
-                    expression += "×" +"(";
+                if (!expression.isEmpty() && isNumber(expression.charAt(expression.length() - 1))) {
+                    expression += "×" + "(";
                 } else {
                     expression += "(";
                 }
@@ -638,8 +643,9 @@ public class MainActivity extends AppCompatActivity {
         right_br.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!isNumber(expression.charAt(expression.length() - 1))){
-                    Toast.makeText(MainActivity.this, "必须在数字的后面", Toast.LENGTH_SHORT).show();
+                if (!isNumber(expression.charAt(expression.length() - 1))) {
+                    ToastUtil.showShort(MainActivity.this, "必须在数字的后面");
+
                 } else {
                     expression += ")";
                 }
@@ -649,8 +655,9 @@ public class MainActivity extends AppCompatActivity {
         reciprocal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (expression.length() == 0 || !isNumber(expression.charAt(expression.length() - 1))){
-                    Toast.makeText(MainActivity.this, "必须在数字的后面", Toast.LENGTH_SHORT).show();
+                if (expression.length() == 0 || !isNumber(expression.charAt(expression.length() - 1))) {
+                    ToastUtil.showShort(MainActivity.this, "必须在数字的后面");
+
                 } else {
                     expression += "^-1";
                     input.setText(expression);
@@ -661,15 +668,15 @@ public class MainActivity extends AppCompatActivity {
         factorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (expression.length() == 0){
-                    Toast.makeText(MainActivity.this, "必须在数字的后面", Toast.LENGTH_SHORT).show();
+                if (expression.length() == 0) {
+                    ToastUtil.showShort(MainActivity.this, "必须在数字的后面");
                     return;
                 }
-                if (isNumber(expression.charAt(expression.length() - 1))){
+                if (isNumber(expression.charAt(expression.length() - 1))) {
                     expression += "!";
                     input.setText(expression);
-                }else {
-                    Toast.makeText(MainActivity.this, "必须在数字的后面", Toast.LENGTH_SHORT).show();
+                } else {
+                    ToastUtil.showShort(MainActivity.this, "必须在数字的后面");
                 }
             }
         });
@@ -677,7 +684,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Calculator calculator = new Calculator();
-                double result = calculator.cal(expression,3); //调用科学计算器
+                double result = calculator.cal(expression, 3); //调用科学计算器
 
                 if (result == Double.MAX_VALUE)
                     expression = "Math Error";
@@ -697,7 +704,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Calculator calculator = new Calculator();
-                double result = calculator.cal(expression,3); //调用科学计算器
+                double result = calculator.cal(expression, 3); //调用科学计算器
 
                 if (result == Double.MAX_VALUE)
                     expression = "Math Error";
@@ -749,11 +756,13 @@ public class MainActivity extends AppCompatActivity {
         }
         isNormalLayout = !isNormalLayout;
     }
-    private boolean isNumber(char c){
+
+    private boolean isNumber(char c) {
         return c == '0' || c == '1' || c == '2' || c == '3' || c == '4' || c == '5' ||
                 c == '6' || c == '7' || c == '8' || c == '9';
     }
-    private boolean isOpe(char c){
+
+    private boolean isOpe(char c) {
         return c == '+' || c == '-' || c == '×' || c == '÷';
     }
 
