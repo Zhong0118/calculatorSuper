@@ -15,6 +15,9 @@ public class PrecisionUtil{
         precisionValues.add("3");
         precisionValues.add("4");
         precisionValues.add("5");
+        precisionValues.add("6");
+        precisionValues.add("7");
+        precisionValues.add("8");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, precisionValues);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

@@ -108,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // 当选择项改变时，更新选中的精度值
                 precision = Integer.parseInt((String) parentView.getItemAtPosition(position));
+                ToastUtil.showShort(MainActivity.this,"现在的精度是: " + precision);
                 // TODO: 处理选择的精度值
             }
 
@@ -117,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 precision = 3;
             }
         });
+        ToastUtil.showShort(MainActivity.this,"现在的精度是3");
 
         button0 = findViewById(R.id.number0);
         button1 = findViewById(R.id.number1);
