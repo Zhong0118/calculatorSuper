@@ -36,5 +36,11 @@
         <item name="android:layout_margin">2dp</item>
 
     </style>
+    <style name="SpinnerStyle">
+        <item name="android:background">@drawable/spinner_background</item>
+        <item name="android:popupBackground">@drawable/spinner_popup_background</item>
+        <item name="android:dropDownSelector">@color/colorAccent</item>
+    </style>
+
 
 </resources>

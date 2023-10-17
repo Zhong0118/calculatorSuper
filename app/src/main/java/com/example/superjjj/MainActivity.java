@@ -2,6 +2,7 @@ package com.example.superjjj;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.superjjj.util.PrecisionUtil;
 import com.example.superjjj.util.SwitchButton;
 import com.example.superjjj.util.ToastUtil;
 
@@ -11,9 +12,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
     private View normalKeyboardLayout; // 简单布局
     private View superKeyboardLayout; // 复杂布局
     private ScrollView scrollView;
+
+    private Spinner precisionSpinner;
+    private int precision;
 
     private String expression = "";
     private TextView input;
@@ -90,6 +96,26 @@ public class MainActivity extends AppCompatActivity {
                 switchView();
             }
 
+        });
+
+        precisionSpinner = findViewById(R.id.precision);
+
+        // 初始化下拉列表
+        PrecisionUtil.initPrecisionSpinner(this, precisionSpinner);
+        precisionSpinner.setSelection(2);
+        precisionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                // 当选择项改变时，更新选中的精度值
+                precision = Integer.parseInt((String) parentView.getItemAtPosition(position));
+                // TODO: 处理选择的精度值
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                // 在用户未选择任何项时的处理
+                precision = 3;
+            }
         });
 
         button0 = findViewById(R.id.number0);
@@ -684,7 +710,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Calculator calculator = new Calculator();
-                double result = calculator.cal(expression, 3); //调用科学计算器
+                double result = calculator.cal(expression, precision); //调用科学计算器
 
                 if (result == Double.MAX_VALUE)
                     expression = "Math Error";
@@ -704,7 +730,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Calculator calculator = new Calculator();
-                double result = calculator.cal(expression, 3); //调用科学计算器
+                double result = calculator.cal(expression, precision); //调用科学计算器
 
                 if (result == Double.MAX_VALUE)
                     expression = "Math Error";
