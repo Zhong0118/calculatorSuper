@@ -8,12 +8,13 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.animation.ValueAnimator;
 import android.widget.CompoundButton;
 
 import com.example.superjjj.R;
 
 public class SwitchButton extends View {
-
     private Paint paint;
     private boolean isChecked = false;
     private CompoundButton.OnCheckedChangeListener mListener;
@@ -21,6 +22,7 @@ public class SwitchButton extends View {
     private float switchWidth;
     private float switchHeight;
     private float circleDiameter;
+    private float circleX;
 
     public SwitchButton(Context context) {
         super(context);
@@ -40,25 +42,51 @@ public class SwitchButton extends View {
     private void init(Context context, AttributeSet attrs) {
         paint = new Paint();
         paint.setStyle(Paint.Style.FILL);
-        paint.setAntiAlias(true); // 抗锯齿
+        paint.setAntiAlias(true);
 
-        // 获取自定义属性
         if (attrs != null) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.SwitchButton);
-            switchWidth = typedArray.getDimension(R.styleable.SwitchButton_switchWidth, dpToPx(70)); // 默认宽度60dp
-            switchHeight = typedArray.getDimension(R.styleable.SwitchButton_switchHeight, dpToPx(35)); // 默认高度40dp
-            circleDiameter = switchHeight; // 小圆圈直径等于开关的高度
+            switchWidth = typedArray.getDimension(R.styleable.SwitchButton_switchWidth, dpToPx(70));
+            switchHeight = typedArray.getDimension(R.styleable.SwitchButton_switchHeight, dpToPx(35));
+            circleDiameter = switchHeight;
             typedArray.recycle();
         }
 
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                isChecked = !isChecked;
-                invalidate();
-                notifyOnCheckedChanged();
+                toggle();
             }
         });
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        circleX = isChecked ? getWidth() - circleDiameter : 0;
+    }
+
+    private void toggle() {
+        isChecked = !isChecked;
+        animateCircleX();
+        notifyOnCheckedChanged();
+    }
+
+    private void animateCircleX() {
+        float start = isChecked ? 0 : getWidth() - circleDiameter;
+        float end = isChecked ? getWidth() - circleDiameter : 0;
+
+        ValueAnimator animator = ValueAnimator.ofFloat(start, end);
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                circleX = (float) animation.getAnimatedValue();
+                invalidate();
+            }
+        });
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
+        animator.setDuration(300);
+        animator.start();
     }
 
     @Override
@@ -70,30 +98,16 @@ public class SwitchButton extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        int width = getWidth();
-        int height = getHeight();
-
-        // 绘制底部灰色背景
-        paint.setColor(Color.GRAY);
+        paint.setColor(isChecked ? Color.rgb(0, 128, 0) : Color.GRAY);
         canvas.drawRoundRect(new RectF(0, 0, switchWidth, switchHeight), switchHeight / 2, switchHeight / 2, paint);
 
-        // 计算小圆圈的位置
-        float circleX = isChecked ? width - circleDiameter : 0;
-        // 绘制绿色背景
-        if (isChecked) {
-            paint.setColor(Color.rgb(0, 128, 0)); // 深绿色
-            float greenRectWidth = circleX + circleDiameter / 2 + 20;
-            canvas.drawRoundRect(new RectF(0, 0, greenRectWidth, switchHeight), switchHeight / 2, switchHeight / 2, paint);
-        }
-
-        // 绘制小圆圈
         paint.setColor(Color.WHITE);
-        canvas.drawCircle(circleX + circleDiameter / 2, switchHeight / 2, circleDiameter / 2, paint);
+        canvas.drawCircle(circleX + circleDiameter / 2, switchHeight / 2, circleDiameter / 2 - 2, paint);
     }
 
     public void setChecked(boolean checked) {
         isChecked = checked;
-        invalidate();
+        animateCircleX();
         notifyOnCheckedChanged();
     }
 
