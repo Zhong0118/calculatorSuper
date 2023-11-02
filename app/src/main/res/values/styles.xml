@@ -8,34 +8,29 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="btn_normal_style">
-
-        <item name="android:textSize">27dp</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_columnWeight">1</item>
-        <item name="android:layout_rowWeight">1</item>
+    <style name="BaseButtonStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:radius">10dp</item>
         <item name="android:background">@drawable/button_info</item>
+        <item name="android:radius">10dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="btn_normal_style" parent="BaseButtonStyle">
+        <item name="android:textSize">27sp</item>
         <item name="android:layout_margin">3dp</item>
-
-    </style>
-
-    <style name="btn_super_style">
-
-        <item name="android:textSize">23sp</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_columnWeight">1</item>
         <item name="android:layout_rowWeight">1</item>
-        <item name="android:background">@drawable/button_info</item>
-
-        <item name="android:textStyle">bold</item>
-        <item name="android:radius">10dp</item>
-        <item name="android:layout_margin">2dp</item>
-
     </style>
+
+    <style name="btn_super_style" parent="BaseButtonStyle">
+        <item name="android:textSize">23sp</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_columnWeight">1</item>
+        <item name="android:layout_rowWeight">1</item>
+    </style>
+
     <style name="SpinnerStyle">
         <item name="android:background">@drawable/spinner_background</item>
         <item name="android:popupBackground">@drawable/spinner_popup_background</item>

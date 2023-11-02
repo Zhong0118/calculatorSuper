@@ -1,6 +1,8 @@
 package com.example.superjjj;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.superjjj.util.PrecisionUtil;
 import com.example.superjjj.util.SwitchButton;
@@ -11,16 +13,28 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.ScrollingMovementMethod;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+    List<String> historyList = new ArrayList<>();
+    private DrawerLayout drawerLayout;
+    private ListView historyListView;
+    private ArrayAdapter historyAdapter;
+
     private boolean isNormalLayout = true;
     private SwitchButton switchButton;
     private View normalKeyboardLayout; // 简单布局
@@ -54,6 +68,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        historyListView = findViewById(R.id.historyListView);
+        historyAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, historyList);
+        historyListView.setAdapter(historyAdapter);
+
         scrollView = findViewById(R.id.scrollView);
         input = findViewById(R.id.input_view);
         output = findViewById(R.id.output_view);
@@ -108,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 // 当选择项改变时，更新选中的精度值
                 precision = Integer.parseInt((String) parentView.getItemAtPosition(position));
-                ToastUtil.showShort(MainActivity.this,"现在的精度是: " + precision);
+                ToastUtil.showShort(MainActivity.this, "现在的精度是: " + precision);
                 // TODO: 处理选择的精度值
             }
 
@@ -118,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                 precision = 3;
             }
         });
-        ToastUtil.showShort(MainActivity.this,"现在的精度是3");
+        ToastUtil.showShort(MainActivity.this, "现在的精度是3");
 
         button0 = findViewById(R.id.number0);
         button1 = findViewById(R.id.number1);
@@ -203,6 +223,33 @@ public class MainActivity extends AppCompatActivity {
         initBaseOpers();
         initBaseCalculatorFunction();
         initSuperFunction();
+
+        final GestureDetector gestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                if (e2.getX() - e1.getX() > 100) { // 向右滑动
+                    drawerLayout.openDrawer(GravityCompat.START); // 修改这里
+                }
+                return super.onFling(e1, e2, velocityX, velocityY);
+            }
+        });
+
+        drawerLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return gestureDetector.onTouchEvent(motionEvent);
+            }
+        });
+
+
+        Button clearHistoryButton = findViewById(R.id.clearHistoryButton);
+        clearHistoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                historyList.clear();
+                historyAdapter.notifyDataSetChanged();
+            }
+        });
 
 
     }
@@ -317,15 +364,17 @@ public class MainActivity extends AppCompatActivity {
                 if (equal_flag) {
                     equal_flag = false;
                 }
-                if (expression.length() == 0) {                                //1.为空，+0.
+                if (expression.length() == 0) {                                //1.expression为空，+0.
                     expression += "0.";
-                } else if (isOpe(expression.charAt(expression.length() - 1))) {  //2.最后一个字符为oper，+0.
+                } else if (isOpe(expression.charAt(expression.length() - 1))
+                        || expression.charAt(expression.length() - 1) == '(') {  //2.expression的最后一个字符为oper，+0.
                     expression += "0.";
-                } else if (isNumber(expression.charAt(expression.length() - 1))) {   //3.最后一个字符为num，+.
+                } else if (isNumber(expression.charAt(expression.length() - 1))) {   //3.expression的最后一个字符为num，+.
                     expression += ".";
                 } else {                                                    //4.除此之外，不加
                     expression += "";
                     ToastUtil.showShort(MainActivity.this, "不可连续输入小数点0");
+
                 }
                 input.setText(expression);
             }
@@ -336,12 +385,12 @@ public class MainActivity extends AppCompatActivity {
                 if (equal_flag) {
                     equal_flag = false;
                 }
-                if (expression.length() == 0) {                                //1.mathNow为空，+0.
+                if (expression.length() == 0) {                                //1.expression为空，+0.
                     expression += "0.";
                 } else if (isOpe(expression.charAt(expression.length() - 1))
-                        || expression.charAt(expression.length() - 1) == '(') {  //2.mathNow的最后一个字符为oper，+0.
+                        || expression.charAt(expression.length() - 1) == '(') {  //2.expression的最后一个字符为oper，+0.
                     expression += "0.";
-                } else if (isNumber(expression.charAt(expression.length() - 1))) {   //3.mathNow的最后一个字符为num，+.
+                } else if (isNumber(expression.charAt(expression.length() - 1))) {   //3.expression的最后一个字符为num，+.
                     expression += ".";
                 } else {                                                    //4.除此之外，不加
                     expression += "";
@@ -354,136 +403,42 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initBaseOpers() {
-        div.setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener operatorClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (equal_flag) {
-                    equal_flag = false;
-                }
-                if (expression.length() == 0) {                                //1.mathNow为空，+0.
-                    ToastUtil.showShort(MainActivity.this, "不可在空公式中输入运算符");
-                } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0, expression.length() - 1) + div.getText().toString();
-                } else {                                                    //4.除此之外，不加
-                    expression += div.getText().toString();
-                }
-                input.setText(expression);
+                Button button = (Button) view;
+                handleOperatorButtonClick(button.getText().toString());
             }
-        });
-        divs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (equal_flag) {
-                    equal_flag = false;
-                }
-                if (expression.length() == 0) {                                //1.mathNow为空，+0.
-                    Toast.makeText(MainActivity.this, "不可在空公式中输入运算符", Toast.LENGTH_SHORT).show();
-                } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0, expression.length() - 1) + divs.getText().toString();
-                } else {                                                    //4.除此之外，不加
-                    expression += divs.getText().toString();
-                }
-                input.setText(expression);
-            }
-        });
-        mul.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (equal_flag) {
-                    equal_flag = false;
-                }
-                if (expression.length() == 0) {                                //1.mathNow为空，+0.
-                    Toast.makeText(MainActivity.this, "不可在空公式中输入运算符", Toast.LENGTH_SHORT).show();
-                } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0, expression.length() - 1) + mul.getText().toString();
-                } else {                                                    //4.除此之外，不加
-                    expression += mul.getText().toString();
-                }
-                input.setText(expression);
-            }
-        });
-        muls.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (equal_flag) {
-                    equal_flag = false;
-                }
-                if (expression.length() == 0) {                                //1.mathNow为空，+0.
-                    Toast.makeText(MainActivity.this, "不可在空公式中输入运算符", Toast.LENGTH_SHORT).show();
-                } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0, expression.length() - 1) + muls.getText().toString();
-                } else {                                                    //4.除此之外，不加
-                    expression += muls.getText().toString();
-                }
-                input.setText(expression);
-            }
-        });
-        min.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (equal_flag) {
-                    equal_flag = false;
-                }
-                if (expression.length() == 0) {                                //1.mathNow为空，+0.
-                    Toast.makeText(MainActivity.this, "不可在空公式中输入运算符", Toast.LENGTH_SHORT).show();
-                } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0, expression.length() - 1) + min.getText().toString();
-                } else {                                                    //4.除此之外，不加
-                    expression += min.getText().toString();
-                }
-                input.setText(expression);
-            }
-        });
-        mins.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (equal_flag) {
-                    equal_flag = false;
-                }
-                if (expression.length() == 0) {                                //1.mathNow为空，+0.
-                    Toast.makeText(MainActivity.this, "不可在空公式中输入运算符", Toast.LENGTH_SHORT).show();
-                } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0, expression.length() - 1) + mins.getText().toString();
-                } else {                                                    //4.除此之外，不加
-                    expression += mins.getText().toString();
-                }
-                input.setText(expression);
-            }
-        });
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (equal_flag) {
-                    equal_flag = false;
-                }
-                if (expression.length() == 0) {                                //1.mathNow为空，+0.
-                    Toast.makeText(MainActivity.this, "不可在空公式中输入运算符", Toast.LENGTH_SHORT).show();
-                } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0, expression.length() - 1) + add.getText().toString();
-                } else {                                                    //4.除此之外，不加
-                    expression += add.getText().toString();
-                }
-                input.setText(expression);
-            }
-        });
-        adds.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (equal_flag) {
-                    equal_flag = false;
-                }
-                if (expression.length() == 0) {                                //1.mathNow为空，+0.
-                    ToastUtil.showShort(MainActivity.this, "不可在空公式中输入运算符");
+        };
 
-                } else if (expression.matches("^.*[+\\-×÷.]+$")) {  //2.mathNow的最后一个字符为oper，+0.
-                    expression = expression.substring(0, expression.length() - 1) + add.getText().toString();
-                } else {                                                    //4.除此之外，不加
-                    expression += add.getText().toString();
-                }
-                input.setText(expression);
-            }
-        });
+        div.setOnClickListener(operatorClickListener);
+        divs.setOnClickListener(operatorClickListener);
+        mul.setOnClickListener(operatorClickListener);
+        muls.setOnClickListener(operatorClickListener);
+        min.setOnClickListener(operatorClickListener);
+        mins.setOnClickListener(operatorClickListener);
+        add.setOnClickListener(operatorClickListener);
+        adds.setOnClickListener(operatorClickListener);
     }
+
+    private void handleOperatorButtonClick(String operator) {
+        if (equal_flag) {
+            equal_flag = false;
+        }
+
+        int length = expression.length();
+
+        if (length == 0) {
+            Toast.makeText(this, "不可在空公式中输入运算符", Toast.LENGTH_SHORT).show();
+        } else if (expression.matches("^.*[+\\-×÷.]$")) {
+            expression = expression.substring(0, length - 1) + operator;
+        } else {
+            expression += operator;
+        }
+
+        input.setText(expression);
+    }
+
 
     private void initBaseCalculatorFunction() {
         clear.setOnClickListener(new View.OnClickListener() {
@@ -565,31 +520,34 @@ public class MainActivity extends AppCompatActivity {
                     ToastUtil.showShort(MainActivity.this, "不能这样改变正负");
                     return;
                 }
-                if (isNumber(expression.charAt(expression.length() - 1))) { // 如果前面是数字的话
-                    int i;
-                    for (i = expression.length() - 1; i >= 0; i--) {
-                        if (!isNumber(expression.charAt(i)) || expression.charAt(i) == '.') {
-                            break; // 此时的i的值是符号的位置，所以下面的substring要加一
-                        }
-                    }
-                    // 把数据切开
-                    String before = expression.substring(0, i + 1);
-                    String after = expression.substring(i + 1, expression.length()); //
-                    expression = before + "(-" + after + ")";
-                    input.setText(expression);
-                } // 此时是把正数变负数
-                else if (expression.matches("^.*\\(-[0123456789.]+\\)$")) {
-                    String before = expression.substring(0, expression.lastIndexOf("(-"));
-                    // 表示记录（-之前的所有数据
-                    String after = expression.substring(expression.lastIndexOf("(-") + 2,
-                            expression.length() - 1);
-                    // 表示记录（-后的去掉右括号的所有数值
-                    expression = before + after;
-                    input.setText(expression);
-                } else {
-                    ToastUtil.showShort(MainActivity.this, "不能这样改变正负");
 
+                int length = expression.length();
+                int i = length - 1;
+
+                // 寻找最后一个数字或点的位置
+                while (i >= 0 && (isNumber(expression.charAt(i)) || expression.charAt(i) == '.')) {
+                    i--;
                 }
+
+                // 如果是正数，添加括号和负号
+                if (i < length - 1 && expression.charAt(i + 1) != '(') {
+                    String before = expression.substring(0, i + 1);
+                    String after = expression.substring(i + 1);
+                    expression = before + "(-" + after + ")";
+                }
+                // 如果是已经添加了括号和负号的数字，去掉它们
+                else if (expression.charAt(i + 1) == '(') {
+                    String before = expression.substring(0, i + 1);
+                    String after = expression.substring(i + 3, length - 1);
+                    expression = before + after;
+                }
+                // 如果没有匹配的情况，显示错误消息
+                else {
+                    ToastUtil.showShort(MainActivity.this, "不能这样改变正负");
+                    return;
+                }
+
+                input.setText(expression);
             }
         });
         symbols.setOnClickListener(new View.OnClickListener() {
@@ -597,34 +555,36 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (expression.length() == 0) {
                     ToastUtil.showShort(MainActivity.this, "不能这样改变正负");
-
                     return;
                 }
-                if (isNumber(expression.charAt(expression.length() - 1))) { // 如果前面是数字的话
-                    int i;
-                    for (i = expression.length() - 1; i >= 0; i--) {
-                        if (!isNumber(expression.charAt(i)) || expression.charAt(i) == '.') {
-                            break; // 此时的i的值是符号的位置，所以下面的substring要加一
-                        }
-                    }
-                    // 把数据切开
-                    String before = expression.substring(0, i + 1);
-                    String after = expression.substring(i + 1, expression.length()); //
-                    expression = before + "(-" + after + ")";
-                    input.setText(expression);
-                } // 此时是把正数变负数
-                else if (expression.matches("^.*\\(-[0123456789.]+\\)$")) {
-                    String before = expression.substring(0, expression.lastIndexOf("(-"));
-                    // 表示记录（-之前的所有数据
-                    String after = expression.substring(expression.lastIndexOf("(-") + 2,
-                            expression.length() - 1);
-                    // 表示记录（-后的去掉右括号的所有数值
-                    expression = before + after;
-                    input.setText(expression);
-                } else {
-                    ToastUtil.showShort(MainActivity.this, "不能这样改变正负");
 
+                int length = expression.length();
+                int i = length - 1;
+
+                // 寻找最后一个数字或点的位置
+                while (i >= 0 && (isNumber(expression.charAt(i)) || expression.charAt(i) == '.')) {
+                    i--;
                 }
+
+                // 如果是正数，添加括号和负号
+                if (i < length - 1 && expression.charAt(i + 1) != '(') {
+                    String before = expression.substring(0, i + 1);
+                    String after = expression.substring(i + 1);
+                    expression = before + "(-" + after + ")";
+                }
+                // 如果是已经添加了括号和负号的数字，去掉它们
+                else if (expression.charAt(i + 1) == '(') {
+                    String before = expression.substring(0, i + 1);
+                    String after = expression.substring(i + 3, length - 1);
+                    expression = before + after;
+                }
+                // 如果没有匹配的情况，显示错误消息
+                else {
+                    ToastUtil.showShort(MainActivity.this, "不能这样改变正负");
+                    return;
+                }
+
+                input.setText(expression);
             }
         });
     }
@@ -713,6 +673,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Calculator calculator = new Calculator();
                 double result = calculator.cal(expression, precision); //调用科学计算器
+                historyList.add(expression + "=" + result);
+                historyAdapter.notifyDataSetChanged();
 
                 if (result == Double.MAX_VALUE)
                     expression = "Math Error";
@@ -733,6 +695,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Calculator calculator = new Calculator();
                 double result = calculator.cal(expression, precision); //调用科学计算器
+                historyList.add(expression + "=" + result);
+                historyAdapter.notifyDataSetChanged();
+
 
                 if (result == Double.MAX_VALUE)
                     expression = "Math Error";
@@ -793,5 +758,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean isOpe(char c) {
         return c == '+' || c == '-' || c == '×' || c == '÷';
     }
+
 
 }
