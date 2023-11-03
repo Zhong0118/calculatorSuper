@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
                 if (e2.getX() - e1.getX() > 100) { // 向右滑动
-                    drawerLayout.openDrawer(GravityCompat.START); // 修改这里
+                    drawerLayout.openDrawer(GravityCompat.START);
                 }
                 return super.onFling(e1, e2, velocityX, velocityY);
             }
@@ -257,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initInput() {
         input.setMovementMethod(ScrollingMovementMethod.getInstance()); //内容自动滚动到最新的一行
-        input.setTextIsSelectable(true); //长按复制
+        input.setTextIsSelectable(true);
     }
 
     private void initNumBtns() {
@@ -536,10 +536,14 @@ public class MainActivity extends AppCompatActivity {
                     expression = before + "(-" + after + ")";
                 }
                 // 如果是已经添加了括号和负号的数字，去掉它们
-                else if (expression.charAt(i + 1) == '(') {
-                    String before = expression.substring(0, i + 1);
-                    String after = expression.substring(i + 3, length - 1);
+                else if (expression.matches("^.*\\(-[0123456789.]+\\)$")){
+                    String before = expression.substring(0,expression.lastIndexOf("(-"));
+                    // 表示记录（-之前的所有数据
+                    String after = expression.substring(expression.lastIndexOf("(-") + 2,
+                            expression.length() - 1);
+                    // 表示记录（-后的去掉右括号的所有数值
                     expression = before + after;
+                    input.setText(expression);
                 }
                 // 如果没有匹配的情况，显示错误消息
                 else {
@@ -573,10 +577,14 @@ public class MainActivity extends AppCompatActivity {
                     expression = before + "(-" + after + ")";
                 }
                 // 如果是已经添加了括号和负号的数字，去掉它们
-                else if (expression.charAt(i + 1) == '(') {
-                    String before = expression.substring(0, i + 1);
-                    String after = expression.substring(i + 3, length - 1);
+                else if (expression.matches("^.*\\(-[0123456789.]+\\)$")){
+                    String before = expression.substring(0,expression.lastIndexOf("(-"));
+                    // 表示记录（-之前的所有数据
+                    String after = expression.substring(expression.lastIndexOf("(-") + 2,
+                            expression.length() - 1);
+                    // 表示记录（-后的去掉右括号的所有数值
                     expression = before + after;
+                    input.setText(expression);
                 }
                 // 如果没有匹配的情况，显示错误消息
                 else {
