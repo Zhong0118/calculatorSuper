@@ -50,6 +50,9 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/tabTextColor</item>
     </style>
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+
+    </style>
 
 
 
