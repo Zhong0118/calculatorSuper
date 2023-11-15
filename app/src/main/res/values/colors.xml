@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="button_one">#3B67E8</color>
+    <color name="selectedTabTextColor">#570C94</color>
+    <color name="tabIndicatorColor">#FF5722</color>
+    <color name="tabTextColor">#9A7C32A2</color>
 </resources>
