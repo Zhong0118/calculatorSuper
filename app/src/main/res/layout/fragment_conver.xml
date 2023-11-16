@@ -15,6 +15,7 @@
         android:padding="10dp">
 
         <LinearLayout
+            android:id="@+id/lengthView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -41,6 +42,7 @@
                 android:textSize="25sp"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/areaView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -67,6 +69,7 @@
                 android:textSize="25sp"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/volumeView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -93,6 +96,7 @@
                 android:textSize="25sp"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/weightView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -119,6 +123,7 @@
                 android:textSize="25sp"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/systemView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -145,6 +150,7 @@
                 android:textSize="25sp"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/temperaView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -171,6 +177,7 @@
                 android:textSize="25sp"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/BMIView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -197,6 +204,7 @@
                 android:textSize="25sp"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/englishView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -237,7 +245,7 @@
             android:clickable="true"
             android:focusable="true"
             android:layout_margin="4dp"
-            android:background="?attr/selectableItemBackground">
+            >
 
             <ImageView
                 android:layout_margin="10px"
@@ -261,55 +269,7 @@
             android:clickable="true"
             android:focusable="true"
             android:layout_margin="4dp"
-            android:background="?attr/selectableItemBackground">
-
-            <ImageView
-                android:layout_margin="10px"
-                android:layout_width="70sp"
-                android:layout_height="70sp" />
-
-            <TextView
-                android:layout_marginTop="5px"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="25sp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_gravity="fill"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
-            android:layout_margin="4dp"
-            android:background="?attr/selectableItemBackground">
-
-            <ImageView
-                android:layout_margin="10px"
-                android:layout_width="70sp"
-                android:layout_height="70sp" />
-
-            <TextView
-                android:layout_marginTop="5px"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="25sp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:layout_gravity="fill"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
-            android:layout_margin="4dp"
-            android:background="?attr/selectableItemBackground">
+            >
 
             <ImageView
                 android:layout_margin="10px"

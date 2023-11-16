@@ -12,6 +12,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".EnglishActivity"></activity>
+        <activity android:name=".BMIActivity" />
+        <activity android:name=".TemperaActivity" />
+        <activity android:name=".SystemActivity" />
+        <activity android:name=".WeightActivity" />
+        <activity android:name=".VolumeActivity" />
+        <activity android:name=".AreaActivity" />
+        <activity android:name=".LengthActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

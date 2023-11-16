@@ -1,6 +1,8 @@
 package com.example.superjjj;
 
+import android.app.ActivityOptions;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 
 /**
@@ -20,6 +23,17 @@ import android.view.ViewGroup;
  * create an instance of this fragment.
  */
 public class conver extends Fragment {
+
+    LinearLayout l1;
+    LinearLayout l2;
+    LinearLayout l3;
+    LinearLayout l4;
+    LinearLayout l5;
+    LinearLayout l6;
+    LinearLayout l7;
+    LinearLayout l8;
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -65,9 +79,131 @@ public class conver extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_conver, container, false);
+        View view = inflater.inflate(R.layout.fragment_conver, container, false);
+
+        // 初始化视图
+        l1 = view.findViewById(R.id.lengthView);
+        l2 = view.findViewById(R.id.areaView);
+        l3 = view.findViewById(R.id.volumeView);
+        l4 = view.findViewById(R.id.weightView);
+        l5 = view.findViewById(R.id.systemView);
+        l6 = view.findViewById(R.id.temperaView);
+        l7 = view.findViewById(R.id.BMIView);
+        l8 = view.findViewById(R.id.englishView);
+
+        // 设置点击事件
+        l1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 启动新的Activity
+                Intent intent = new Intent(getActivity(), LengthActivity.class);
+                startActivity(intent,
+                        ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
+            }
+        });
+
+        l2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 启动新的Activity
+                Intent intent = new Intent(getActivity(), AreaActivity.class);
+                startActivity(intent,
+                        ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
+            }
+        });
+
+        l3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 启动新的Activity
+                Intent intent = new Intent(getActivity(), VolumeActivity.class);
+                startActivity(intent,
+                        ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
+            }
+        });
+
+        l4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 启动新的Activity
+                Intent intent = new Intent(getActivity(), WeightActivity.class);
+                startActivity(intent,
+                        ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
+            }
+        });
+
+        l5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 启动新的Activity
+                Intent intent = new Intent(getActivity(), SystemActivity.class);
+                startActivity(intent,
+                        ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
+            }
+        });
+
+        l6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 启动新的Activity
+                Intent intent = new Intent(getActivity(), TemperaActivity.class);
+                startActivity(intent,
+                        ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
+            }
+        });
+
+        l7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 启动新的Activity
+                Intent intent = new Intent(getActivity(), BMIActivity.class);
+                startActivity(intent,
+                        ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
+            }
+        });
+
+        l8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 启动新的Activity
+                Intent intent = new Intent(getActivity(), EnglishActivity.class);
+                startActivity(intent,
+                        ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
+            }
+        });
+        return view;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
