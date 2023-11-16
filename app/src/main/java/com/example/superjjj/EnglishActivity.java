@@ -155,9 +155,7 @@ public class EnglishActivity extends AppCompatActivity {
         String integerPart = parts.length > 0 ? parts[0] : "";
 
         // 检查整数部分的长度
-        if (integerPart.length() > 9 && integerPart.length() < 13) {
-            ToastUtil.showShort(this, "Number too large, not long than 9 bits of integer");
-        } else if (integerPart.length() >= 13){
+        if (integerPart.length() >= 13){
             ToastUtil.showShort(this, "The result will break Trillion!!");
         } else {
             english.setText(new ToEnglish().numberToWords(expression));
@@ -165,8 +163,8 @@ public class EnglishActivity extends AppCompatActivity {
     }
     private void clearAllText() {
         if (num != null) {
-            expression = "0";
-            num.setText("0");
+            expression = "";
+            num.setText("");
         }
     }
 

@@ -13,15 +13,15 @@ public class ToEnglish {
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        // 处理整数部分
         if (!integerPart.isEmpty()) {
-            int integerNumber = Integer.parseInt(integerPart);
+            long integerNumber = Long.parseLong(integerPart); // 使用 long 类型
             if (integerNumber == 0) stringBuilder.append("Zero");
-            else {
+            else { // 依次切开得到相应的位数
                 for (int i = 0; i < mod.length; i++) {
-                    int segment = integerNumber / mod[i];
+                    // 得到当前数量级有几个值
+                    long segment = integerNumber / mod[i]; // 使用 long 类型
                     if (segment > 0) {
-                        appendSegment(stringBuilder, segment);
+                        appendSegment(stringBuilder, (int) segment); // 转换为 int 用于 appendSegment
                         stringBuilder.append(units[i]);
                     }
                     integerNumber %= mod[i];
@@ -43,10 +43,15 @@ public class ToEnglish {
 
     private void appendSegment(StringBuilder stringBuilder, int segment) {
         if (segment >= 100) {
-            stringBuilder.append(oneToTwenty[segment / 100]).append("Hundred and ");
+            // 大于100的就可以直接拿1-20里面的数
+            stringBuilder.append(oneToTwenty[segment / 100]).append("Hundred ");
             segment %= 100;
+            if (segment > 0) {
+                stringBuilder.append("and "); // 在百位数后添加'and'
+            }
         }
         if (segment > 20) {
+            // 大于20就是10，20，30，40...
             stringBuilder.append(tens[segment / 10]);
             segment %= 10;
         }
