@@ -214,6 +214,7 @@ public class TemperaActivity extends AppCompatActivity {
 
         currentSelectedTextView.setText(expression);
     }
+
     private void handleButtonClick(Button button) {
         String buttonText = button.getText().toString();
         switch (button.getId()) {
