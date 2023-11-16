@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp">
+
+    <!-- 返回按钮 -->
+
+    <!-- 标题文本 -->
+    <ImageView
+        android:id="@+id/backButton"
+        android:layout_width="35sp"
+        android:layout_height="35sp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/back"
+        android:background="?attr/selectableItemBackground"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="test"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+</RelativeLayout>
