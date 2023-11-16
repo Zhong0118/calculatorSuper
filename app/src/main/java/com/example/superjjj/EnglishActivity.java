@@ -127,7 +127,12 @@ public class EnglishActivity extends AppCompatActivity {
 
     private void appendTextToCurrentSelectedTextView(String text) {
         String currentText = num.getText().toString();
-        expression = currentText + text;
+        // 检查当前文本是否为"0"
+        if (currentText.equals("0")) {
+            expression = text; // 如果是"0"，则用新输入的文本替换
+        } else {
+            expression = currentText + text; // 否则，追加新输入的文本
+        }
         num.setText(expression);
     }
 
@@ -136,15 +141,18 @@ public class EnglishActivity extends AppCompatActivity {
         switch (button.getId()) {
             case R.id.buttonClearAll:
                 clearAllText();
+                getResult();
                 break;
             case R.id.buttonClear:
                 clearLast();
+                getResult();
                 break;
             case R.id.buttonEqual:
                 getResult();
                 break;
             default:
                 appendTextToCurrentSelectedTextView(buttonText);
+                getResult();
                 break;
         }
     }
@@ -163,8 +171,8 @@ public class EnglishActivity extends AppCompatActivity {
     }
     private void clearAllText() {
         if (num != null) {
-            expression = "";
-            num.setText("");
+            expression = "0";
+            num.setText("0");
         }
     }
 

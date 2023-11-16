@@ -185,21 +185,8 @@ public class SystemActivity extends AppCompatActivity {
             currentSelectedLayout.setBackgroundResource(0); // 移除边框
         }
 
-        // 设置新选中的 LinearLayout 的背景
-        if (textView == bin) {
-            BIN.setBackgroundResource(R.drawable.border);
-            currentSelectedLayout = BIN;
-        } else if (textView == oct) {
-            OCT.setBackgroundResource(R.drawable.border);
-            currentSelectedLayout = OCT;
-        } else if (textView == dec) {
-            DEC.setBackgroundResource(R.drawable.border);
-            currentSelectedLayout = DEC;
-        } else if (textView == hex) {
-            HEX.setBackgroundResource(R.drawable.border);
-            currentSelectedLayout = HEX;
-        }
-
+        currentSelectedLayout = (View) textView.getParent();
+        currentSelectedLayout.setBackgroundResource(R.drawable.border);
 
         if (textView == bin) {
             // BIN 被选中
@@ -281,24 +268,33 @@ public class SystemActivity extends AppCompatActivity {
 
     private void appendTextToCurrentSelectedTextView(String text) {
         String currentText = currentSelectedTextView.getText().toString();
-        expression = currentText + text;
+        // 检查当前文本是否为"0"
+        if (currentText.equals("0")) {
+            expression = text; // 如果是"0"，则用新输入的文本替换
+        } else {
+            expression = currentText + text; // 否则，追加新输入的文本
+        }
         currentSelectedTextView.setText(expression);
     }
+
 
     private void handleButtonClick(Button button) {
         String buttonText = button.getText().toString();
         switch (button.getId()) {
             case R.id.buttonClearAlls:
                 clearAllText();
+                getResult();
                 break;
             case R.id.buttonClears:
                 clearLast();
+                getResult();
                 break;
             case R.id.buttonEquals:
                 getResult();
                 break;
             default:
                 appendTextToCurrentSelectedTextView(buttonText);
+                getResult();
                 break;
         }
     }

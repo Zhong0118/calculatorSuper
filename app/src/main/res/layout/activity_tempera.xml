@@ -26,6 +26,203 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <ScrollView
+        android:id="@+id/middleScroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/dividerSystem"
+        app:layout_constraintBottom_toTopOf="@id/converbutton1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_weight="3">
+
+
+        <LinearLayout
+            android:id="@+id/middleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:id="@+id/CenView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginTop="6px">
+
+                <TextView
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:paddingLeft="10dp"
+                    android:text="Cen-°C" />
+
+                <TextView
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/CenText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="right|bottom"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/FahView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginTop="6px">
+
+                <TextView
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_weight="2"
+                    android:paddingLeft="10dp"
+                    android:text="Fah-°F" />
+
+                <TextView
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/FahText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="right|bottom"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/KelView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginTop="6px">
+
+                <TextView
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_weight="2"
+                    android:paddingLeft="10dp"
+                    android:text="Kel-K" />
+
+                <TextView
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/KelText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="right|bottom"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="20sp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/RanView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginTop="6px">
+
+                <TextView
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_weight="2"
+                    android:paddingLeft="10dp"
+                    android:text="Ran-°R" />
+
+                <TextView
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/RanText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="right|bottom"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="20sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ReaView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:orientation="horizontal"
+                android:weightSum="5"
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_marginTop="6px">
+
+                <TextView
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:layout_weight="2"
+                    android:paddingLeft="10dp"
+                    android:text="Rea-°Re" />
+
+                <TextView
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/ReaText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="right|bottom"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
 
     <include
         android:id="@+id/converbutton1"
@@ -35,7 +232,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header" />
+        app:layout_constraintTop_toBottomOf="@id/middleScroll"
+        app:layout_constraintVertical_weight="3"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
