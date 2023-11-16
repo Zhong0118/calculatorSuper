@@ -44,7 +44,8 @@
             android:orientation="horizontal"
             android:weightSum="5"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:layout_marginTop="6px">
 
             <TextView
                 android:clickable="true"
@@ -92,7 +93,8 @@
             android:orientation="horizontal"
             android:weightSum="5"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:layout_marginTop="6px">
 
             <TextView
                 android:clickable="true"

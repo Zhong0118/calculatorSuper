@@ -10,6 +10,9 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.superjjj.util.ToEnglish;
+import com.example.superjjj.util.ToastUtil;
+
 public class EnglishActivity extends AppCompatActivity {
 
     private View header;
@@ -138,6 +141,7 @@ public class EnglishActivity extends AppCompatActivity {
                 clearLast();
                 break;
             case R.id.buttonEqual:
+                getResult();
                 break;
             default:
                 appendTextToCurrentSelectedTextView(buttonText);
@@ -145,17 +149,35 @@ public class EnglishActivity extends AppCompatActivity {
         }
     }
 
+    private void getResult() {
+        // 分割整数和小数部分
+        String[] parts = expression.split("\\.");
+        String integerPart = parts.length > 0 ? parts[0] : "";
+
+        // 检查整数部分的长度
+        if (integerPart.length() > 9 && integerPart.length() < 13) {
+            ToastUtil.showShort(this, "Number too large, not long than 9 bits of integer");
+        } else if (integerPart.length() >= 13){
+            ToastUtil.showShort(this, "The result will break Trillion!!");
+        } else {
+            english.setText(new ToEnglish().numberToWords(expression));
+        }
+    }
     private void clearAllText() {
         if (num != null) {
-            expression = "";
-            num.setText("");
+            expression = "0";
+            num.setText("0");
         }
     }
 
     private void clearLast() {
         if (num != null && num.length() > 0) {
             String currentText = num.getText().toString();
-            expression = currentText.substring(0, currentText.length() - 1);
+            if (currentText.length() == 1) {
+                expression = "0";
+            } else {
+                expression = currentText.substring(0, currentText.length() - 1);
+            }
             num.setText(expression);
         }
     }

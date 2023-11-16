@@ -38,13 +38,11 @@ public class SystemActivity extends AppCompatActivity {
     private String expression;
 
 
-
     private Button[] function = new Button[3]; // 清0，回退，等号
     private Button[] binary = new Button[3]; // 1，0，00 二进制
     private Button[] octonary = new Button[6]; // 八进制 234567
     private Button[] decimal = new Button[2]; // 十进制 89
     private Button[] hexadecimal = new Button[6]; // 16进制ABCDEF
-
 
 
     Button button0, button00, button1;
@@ -149,6 +147,7 @@ public class SystemActivity extends AppCompatActivity {
 
     /**
      * 得到对应的选中的layout和textview
+     *
      * @param layout
      * @param textView
      */
@@ -167,6 +166,7 @@ public class SystemActivity extends AppCompatActivity {
 
     /**
      * 不断更换选中的textView
+     *
      * @param textView
      */
     private void changeTextSelected(TextView textView) {
@@ -304,32 +304,32 @@ public class SystemActivity extends AppCompatActivity {
     }
 
     private void getResult() {
-        if (currentSelectedTextView != null && !expression.isEmpty()){
+        if (currentSelectedTextView != null && !expression.isEmpty()) {
             try {
                 long decimalValue;
-                if (currentSelectedTextView == bin){
-                    decimalValue = parseLongWithOverflowCheck(expression,2);
+                if (currentSelectedTextView == bin) {
+                    decimalValue = parseLongWithOverflowCheck(expression, 2);
                     oct.setText(Long.toOctalString(decimalValue));
                     dec.setText(Long.toString(decimalValue));
                     hex.setText(Long.toHexString(decimalValue).toUpperCase());
-                } else if (currentSelectedTextView == oct){
-                    decimalValue = parseLongWithOverflowCheck(expression,8);
+                } else if (currentSelectedTextView == oct) {
+                    decimalValue = parseLongWithOverflowCheck(expression, 8);
                     bin.setText(Long.toBinaryString(decimalValue));
                     dec.setText(Long.toString(decimalValue));
                     hex.setText(Long.toHexString(decimalValue).toUpperCase());
-                } else if (currentSelectedTextView == dec){
-                    decimalValue = parseLongWithOverflowCheck(expression,10);
+                } else if (currentSelectedTextView == dec) {
+                    decimalValue = parseLongWithOverflowCheck(expression, 10);
                     bin.setText(Long.toBinaryString(decimalValue));
                     oct.setText(Long.toOctalString(decimalValue));
                     hex.setText(Long.toHexString(decimalValue).toUpperCase());
-                } else if (currentSelectedTextView == hex){
-                    decimalValue = parseLongWithOverflowCheck(expression,16);
+                } else if (currentSelectedTextView == hex) {
+                    decimalValue = parseLongWithOverflowCheck(expression, 16);
                     bin.setText(Long.toBinaryString(decimalValue));
                     oct.setText(Long.toOctalString(decimalValue));
                     dec.setText(Long.toString(decimalValue).toUpperCase());
                 }
             } catch (NumberFormatException e) {
-                ToastUtil.showShort(this, "Number too large or invalid format" );
+                ToastUtil.showShort(this, "Number too large or invalid format");
             }
         }
     }
@@ -337,6 +337,7 @@ public class SystemActivity extends AppCompatActivity {
     /**
      * the value might be too large, when i calculate the lager number the app might be crashed, so i
      * use this to switch the expression
+     *
      * @param value
      * @param radix
      * @return
@@ -352,15 +353,19 @@ public class SystemActivity extends AppCompatActivity {
 
     private void clearAllText() {
         if (currentSelectedTextView != null) {
-            expression = "";
-            currentSelectedTextView.setText("");
+            expression = "0";
+            currentSelectedTextView.setText("0");
         }
     }
 
     private void clearLast() {
         if (currentSelectedTextView != null && currentSelectedTextView.length() > 0) {
             String currentText = currentSelectedTextView.getText().toString();
-            expression = currentText.substring(0, currentText.length() - 1);
+            if (currentText.length() == 1) {
+                expression = "0";
+            } else {
+                expression = currentText.substring(0, currentText.length() - 1);
+            }
             currentSelectedTextView.setText(expression);
         }
     }
