@@ -2,15 +2,15 @@
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight="1"
-    android:padding="12dp">
+    android:padding="8dp">
 
     <!-- 返回按钮 -->
 
     <!-- 标题文本 -->
     <ImageView
         android:id="@+id/backButton"
-        android:layout_width="35sp"
-        android:layout_height="35sp"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
         android:layout_centerVertical="true"
         android:src="@drawable/back"
         android:background="?attr/selectableItemBackground"/>
@@ -21,6 +21,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="test"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold" />
 </RelativeLayout>

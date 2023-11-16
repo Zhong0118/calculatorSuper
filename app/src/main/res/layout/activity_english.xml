@@ -15,6 +15,113 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <View
+        android:id="@+id/dividerSystem"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="#000"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/middleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerSystem"
+        app:layout_constraintBottom_toTopOf="@id/converbutton1"
+        app:layout_constraintVertical_weight="3">
+
+        <LinearLayout
+            android:id="@+id/NumView"
+            android:layout_width="match_parent"
+            android:layout_height="300px"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center_vertical"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:paddingLeft="10dp"
+                android:text="Number" />
+
+            <TextView
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/NumText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="right|bottom"
+                android:layout_gravity="center_vertical"
+                android:textSize="20sp"
+                android:textColor="@color/button_one"
+                android:inputType="textMultiLine"
+                android:scrollbars="vertical"/>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/dividerSystem2"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:background="#3B67E8"
+            app:layout_constraintTop_toBottomOf="@id/NumView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/EngView"
+            android:layout_width="match_parent"
+            android:layout_height="500px"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:clickable="true"
+                android:focusable="true"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:layout_weight="2"
+                android:paddingLeft="10dp"
+                android:text="English" />
+
+            <TextView
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/EngText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="right|bottom"
+                android:layout_gravity="center_vertical"
+                android:textSize="16sp"
+                android:inputType="textMultiLine"
+                android:scrollbars="vertical"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 
     <include
@@ -22,10 +129,11 @@
         layout="@layout/converbutton1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintVertical_weight="3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header" />
+        app:layout_constraintTop_toBottomOf="@id/middleLayout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

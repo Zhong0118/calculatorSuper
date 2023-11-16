@@ -10,14 +10,14 @@
     android:rowCount="5">
 
     <Button
-        android:id="@+id/number1"
+        android:id="@+id/button1s"
         style="@style/btn_normal_style"
         android:layout_row="3"
         android:layout_column="0"
         android:text="1" />
 
     <Button
-        android:id="@+id/number2"
+        android:id="@+id/button2s"
         style="@style/btn_normal_style"
         android:layout_row="3"
         android:layout_column="1"
@@ -25,7 +25,7 @@
         android:text="2" />
 
     <Button
-        android:id="@+id/number3"
+        android:id="@+id/button3s"
         style="@style/btn_normal_style"
         android:layout_row="3"
         android:layout_column="2"
@@ -33,7 +33,7 @@
         android:text="3" />
 
     <Button
-        android:id="@+id/number4"
+        android:id="@+id/button4s"
         style="@style/btn_normal_style"
         android:layout_row="2"
         android:layout_column="0"
@@ -41,7 +41,7 @@
         android:text="4" />
 
     <Button
-        android:id="@+id/number5"
+        android:id="@+id/button5s"
         style="@style/btn_normal_style"
         android:layout_row="2"
         android:layout_column="1"
@@ -49,7 +49,7 @@
         android:text="5" />
 
     <Button
-        android:id="@+id/number6"
+        android:id="@+id/button6s"
         style="@style/btn_normal_style"
         android:layout_row="2"
         android:layout_column="2"
@@ -57,7 +57,7 @@
         android:text="6" />
 
     <Button
-        android:id="@+id/number7"
+        android:id="@+id/button7s"
         style="@style/btn_normal_style"
         android:layout_row="1"
         android:layout_column="0"
@@ -65,7 +65,7 @@
         android:text="7" />
 
     <Button
-        android:id="@+id/number8"
+        android:id="@+id/button8s"
         style="@style/btn_normal_style"
         android:layout_row="1"
         android:layout_column="1"
@@ -73,7 +73,7 @@
         android:text="8" />
 
     <Button
-        android:id="@+id/number9"
+        android:id="@+id/button9s"
         style="@style/btn_normal_style"
         android:layout_row="1"
         android:layout_column="2"
@@ -81,7 +81,7 @@
         android:text="9" />
 
     <Button
-        android:id="@+id/number0"
+        android:id="@+id/button0s"
         style="@style/btn_normal_style"
         android:layout_row="4"
         android:layout_column="1"
@@ -89,7 +89,7 @@
         android:text="0" />
 
     <Button
-        android:id="@+id/clear"
+        android:id="@+id/buttonClearAlls"
         style="@style/btn_normal_style"
         android:layout_row="0"
         android:layout_column="0"
@@ -98,7 +98,7 @@
         android:textColor="@color/button_one" />
 
     <Button
-        android:id="@+id/back"
+        android:id="@+id/buttonClears"
         style="@style/btn_normal_style"
         android:layout_row="0"
         android:layout_column="1"
@@ -108,15 +108,7 @@
 
 
     <Button
-        android:id="@+id/dot"
-        style="@style/btn_normal_style"
-        android:layout_row="4"
-        android:layout_column="2"
-
-        android:text="." />
-
-    <Button
-        android:id="@+id/equal"
+        android:id="@+id/buttonEquals"
         style="@style/btn_normal_style"
         android:layout_row="0"
         android:layout_column="2"
@@ -126,7 +118,7 @@
 
 
     <Button
-        android:id="@+id/number00"
+        android:id="@+id/button00s"
         style="@style/btn_normal_style"
         android:layout_row="4"
         android:layout_column="0"
