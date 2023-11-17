@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".jing"></activity>
+        <activity android:name=".DateActivity"></activity>
+        <activity android:name=".TimeActivity" />
+        <activity android:name=".jing" />
         <activity android:name=".EnglishActivity" />
         <activity android:name=".BMIActivity" />
         <activity android:name=".TemperaActivity" />

@@ -262,6 +262,7 @@
                 android:text="tictactoe"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/gapView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -272,18 +273,48 @@
             android:clickable="true"
             android:focusable="true"
             android:layout_margin="4dp"
-            >
+            android:background="?attr/selectableItemBackground">
 
             <ImageView
                 android:layout_margin="10px"
                 android:layout_width="70sp"
-                android:layout_height="70sp" />
+                android:layout_height="70sp"
+                android:src="@drawable/timelone"/>
 
             <TextView
                 android:layout_marginTop="5px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"/>
+                android:textSize="25sp"
+                android:text="time gap"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/timeView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_gravity="fill"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackground">
+
+            <ImageView
+                android:layout_margin="10px"
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:src="@drawable/timegap"/>
+
+            <TextView
+                android:layout_marginTop="5px"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:text="date"/>
         </LinearLayout>
 
 
