@@ -26,12 +26,12 @@ public class TicTacToeBoardView extends View {
     public void setCurrentPlayer(int player) {
         this.currentPlayer = player;
     }
-    public void setOver(boolean over){
+
+    public void setOver(boolean over) {
         this.over = over;
     }
 
     public boolean[] linesToDraw = new boolean[8];
-
 
 
     private OnGameStateChangeListener gameStateChangeListener;
@@ -43,7 +43,6 @@ public class TicTacToeBoardView extends View {
     public void setOnGameStateChangeListener(OnGameStateChangeListener listener) {
         this.gameStateChangeListener = listener;
     }
-
 
 
     public TicTacToeBoardView(Context context) {
@@ -60,6 +59,34 @@ public class TicTacToeBoardView extends View {
         super(context, attrs, defStyleAttr);
         init();
     }
+
+
+    private float animationProgress = 0f;
+    private boolean isAnimating = false;
+
+    public void startAnimation() {
+        isAnimating = true;
+        animationProgress = 0f;
+        animateDrawing();
+    }
+
+    private void animateDrawing() {
+        if (isAnimating) {
+            animationProgress += 0.05f; // 控制动画速度
+            if (animationProgress > 1) {
+                isAnimating = false;
+                animationProgress = 1;
+            }
+            invalidate();
+            postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    animateDrawing();
+                }
+            }, 16); // 约每秒60帧
+        }
+    }
+
 
     private void init() {
         paint.setColor(Color.GRAY);
@@ -117,40 +144,40 @@ public class TicTacToeBoardView extends View {
             }
         }
 
-        if (over){
+        if (over) {
 
-            Paint lpaint = new Paint();
-            lpaint.setColor(Color.parseColor("#FF0000"));
-            lpaint.setStrokeWidth(15f);
-            lpaint.setStrokeCap(Paint.Cap.ROUND);
-            lpaint.setAntiAlias(true);
+            Paint lPaint = new Paint();
+            lPaint.setColor(Color.parseColor("#FF0000"));
+            lPaint.setStrokeWidth(15f);
+            lPaint.setStrokeCap(Paint.Cap.ROUND);
+            lPaint.setAntiAlias(true);
 
-            if (linesToDraw[0]){
-                canvas.drawLine(0, thirdHeight/2f , getWidth() , thirdHeight/2f , lpaint);
-            } else if (linesToDraw[1]){
-                canvas.drawLine(0, thirdHeight/2f * 3, getWidth(), thirdHeight/2f * 3, lpaint);
+            if (linesToDraw[0]) {
+                canvas.drawLine(0, thirdHeight / 2f, getWidth(), thirdHeight / 2f, lPaint);
+            } else if (linesToDraw[1]) {
+                canvas.drawLine(0, thirdHeight / 2f * 3, getWidth(), thirdHeight / 2f * 3, lPaint);
 
-            } else if (linesToDraw[2]){
-                canvas.drawLine(0, thirdHeight/2f * 5 , getWidth(), thirdHeight/2f * 5 , lpaint);
+            } else if (linesToDraw[2]) {
+                canvas.drawLine(0, thirdHeight / 2f * 5, getWidth(), thirdHeight / 2f * 5, lPaint);
 
-            } else if (linesToDraw[3]){
-                canvas.drawLine(thirdWidth/2f, 0, thirdWidth/2f, getWidth(), lpaint);
+            } else if (linesToDraw[3]) {
+                canvas.drawLine(thirdWidth / 2f, 0, thirdWidth / 2f, getWidth(), lPaint);
 
-            } else if (linesToDraw[4]){
-                canvas.drawLine(thirdWidth/2f * 3, 0, thirdWidth/2f * 3, getWidth() , lpaint);
+            } else if (linesToDraw[4]) {
+                canvas.drawLine(thirdWidth / 2f * 3, 0, thirdWidth / 2f * 3, getWidth(), lPaint);
 
-            } else if (linesToDraw[5]){
-                canvas.drawLine(thirdWidth/2f * 5, 0, thirdWidth/2f * 5 , getWidth(), lpaint);
+            } else if (linesToDraw[5]) {
+                canvas.drawLine(thirdWidth / 2f * 5, 0, thirdWidth / 2f * 5, getWidth(), lPaint);
 
-            } else if (linesToDraw[6]){
-                canvas.drawLine(0, 0, getWidth(), getHeight(), lpaint);
+            } else if (linesToDraw[6]) {
+                canvas.drawLine(0, 0, getWidth(), getHeight(), lPaint);
 
-            } else if (linesToDraw[7]){
-                canvas.drawLine(getWidth(), 0, 0, getHeight(), lpaint);
+            } else if (linesToDraw[7]) {
+                canvas.drawLine(getWidth(), 0, 0, getHeight(), lPaint);
 
             }
 
-            for (int i = 0; i < 8; i++){
+            for (int i = 0; i < 8; i++) {
                 linesToDraw[i] = false;
             }
         }
@@ -159,6 +186,7 @@ public class TicTacToeBoardView extends View {
 
     /**
      * 初始化的时候自动填好的
+     *
      * @param w
      * @param h
      * @param oldw

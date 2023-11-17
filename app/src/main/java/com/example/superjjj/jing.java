@@ -133,7 +133,7 @@ public class jing extends AppCompatActivity {
         // 检查对角线
         if ((boardState[0] != ' ' && boardState[0] == boardState[4] && boardState[0] == boardState[8]) ||
                 (boardState[2] != ' ' && boardState[2] == boardState[4] && boardState[2] == boardState[6])) {
-            if (boardState[0] != ' ') {
+            if (boardState[0] != ' ' && boardState[0] == boardState[4] && boardState[0] == boardState[8]) {
                 ticTacToeBoard.linesToDraw[6] = true;
             } else {
                 ticTacToeBoard.linesToDraw[7] = true;
@@ -170,9 +170,9 @@ public class jing extends AppCompatActivity {
     private void updatePlayerTurn() {
         playerTurn.setTextColor(Color.parseColor("#808080"));
         if (player == 0) {
-            playerTurn.setText("Player 'O' turn");
+            playerTurn.setText("O turn");
         } else {
-            playerTurn.setText("Player 'X' turn");
+            playerTurn.setText("X turn");
         }
     }
 
@@ -187,12 +187,12 @@ public class jing extends AppCompatActivity {
             playerTurn.setTextColor(ContextCompat.getColor(this, R.color.aqua));
             playerTurn.setText("Player 'O' win");
             O++;
-            playerO.setText("Player 'O': " + O);
+            playerO.setText("O: " + O);
         } else if (status == 1){
             playerTurn.setTextColor(ContextCompat.getColor(this, R.color.greenish_yellow));
             playerTurn.setText("Player 'X' win");
             X++;
-            playerX.setText("Player 'X': " + X);
+            playerX.setText("X: " + X);
         } else {
             playerTurn.setTextColor(ContextCompat.getColor(this, R.color.blue_custom));
             playerTurn.setText("Draw");

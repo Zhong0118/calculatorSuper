@@ -44,8 +44,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Player 'O':"
-            android:textSize="16sp" />
+            android:text="O: "
+            android:textColor="@color/aqua"
+            android:textSize="20sp"
+            android:letterSpacing="0.1"/>
 
         <TextView
             android:id="@+id/draw"
@@ -54,7 +56,9 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Draw: "
-            android:textSize="16sp" />
+            android:textColor="@color/blue_custom"
+            android:textSize="20sp"
+            android:letterSpacing="0.1"/>
 
         <TextView
             android:id="@+id/playerX"
@@ -62,8 +66,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Player 'X':"
-            android:textSize="16sp" />
+            android:text="X: "
+            android:textColor="@color/greenish_yellow"
+            android:textSize="20sp"
+            android:letterSpacing="0.1"/>
     </LinearLayout>
 
     <androidx.cardview.widget.CardView
@@ -113,9 +119,9 @@
             android:layout_weight="1"
             android:fontFamily="sans-serif"
             android:gravity="center"
-            android:text="Player 'O' turn"
-            android:textSize="24sp"
-            android:textStyle="italic" />
+            android:text="O turn"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/playButton"
