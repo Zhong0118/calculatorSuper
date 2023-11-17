@@ -14,6 +14,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 public class LengthActivity extends AppCompatActivity {
 
     private View header;
@@ -339,14 +341,79 @@ public class LengthActivity extends AppCompatActivity {
     private void getResult() {
         if (currentSelectedTextView != null && !expression.isEmpty()) {
             double inputTemp = Double.parseDouble(expression);
-            double mi;
+            double length;
+            if (currentSelectedTextView == m){
+                length = inputTemp;
+            } else if (currentSelectedTextView == km){
+                length = inputTemp * 1000;
+            } else if (currentSelectedTextView == dm){
+                length = inputTemp / 10;
+            } else if (currentSelectedTextView == cm){
+                length = inputTemp / 100;
+            }else if (currentSelectedTextView == mm){
+                length = inputTemp / 1000;
+            }else if (currentSelectedTextView == µm){
+                length = inputTemp / 1e6;
+            }else if (currentSelectedTextView == nm){
+                length = inputTemp / 1e9;
+            }else if (currentSelectedTextView == pm){
+                length = inputTemp / 1e12;
+            }else if (currentSelectedTextView == nmi){
+                length = inputTemp * 1852;
+            }else if (currentSelectedTextView == mi){
+                length = inputTemp * 1609.344;
+            }else if (currentSelectedTextView == yd){
+                length = inputTemp * 0.9144;
+            }else if (currentSelectedTextView == ftm){
+                length = inputTemp * 1.8288;
+            }else if (currentSelectedTextView == ft){
+                length = inputTemp * 0.3048;
+            }else if (currentSelectedTextView == in){
+                length = inputTemp * 0.0254;
+            }else if (currentSelectedTextView == li){
+                length = inputTemp * 500;
+            }else if (currentSelectedTextView == zhang){
+                length = inputTemp * 3.33;
+            }else if (currentSelectedTextView == chi){
+                length = inputTemp * 0.333;
+            }else if (currentSelectedTextView == cun){
+                length = inputTemp * 0.0333;
+            }else if (currentSelectedTextView == fen){
+                length = inputTemp * 0.00333;
+            }else if (currentSelectedTextView == lii){
+                length = inputTemp * 0.000333;
+            }else {
+                length = inputTemp * 0.0000333;
+            }
 
+            setResult(length);
             shouldResetInput = true;
 
         }
     }
-    private void setResult(double degree) {
-
+    private void setResult(double length) {
+        DecimalFormat df = new DecimalFormat("#.####"); // 四位小数格式
+        m.setText(df.format(length));
+        km.setText(df.format(0.001 * length));
+        dm.setText(df.format(10 * length));
+        cm.setText(df.format(100 * length));
+        mm.setText(df.format(1000 * length));
+        µm.setText(df.format(1e6 * length));
+        nm.setText(df.format(1e9 * length));
+        pm.setText(df.format(1e12 * length));
+        nmi.setText(df.format(length / 1852));
+        mi.setText(df.format(length / 1609.344));
+        yd.setText(df.format(length / 0.9144));
+        ftm.setText(df.format(length / 1.8288));
+        ft.setText(df.format(length / 0.3048));
+        in.setText(df.format(length / 0.0254));
+        li.setText(df.format(length / 500));
+        zhang.setText(df.format(length / 3.33));
+        chi.setText(df.format(length / 0.333));
+        cun.setText(df.format(length / 0.0333));
+        fen.setText(df.format(length / 0.00333));
+        lii.setText(df.format(length / 0.000333));
+        hao.setText(df.format(length / 0.0000333));
     }
 
     private void clearAllText() {

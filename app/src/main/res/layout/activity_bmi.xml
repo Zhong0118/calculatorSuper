@@ -15,6 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <View
         android:id="@+id/dividerSystem"
         android:layout_width="match_parent"
@@ -22,20 +23,296 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="#000"
-        app:layout_constraintTop_toBottomOf="@id/header"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-
-    <include
-        android:id="@+id/converbutton1"
-        layout="@layout/converbutton1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerSystem"
+        app:layout_constraintWidth_percent="0.85"
+        android:id="@+id/height"
+        android:text="Height (cm)"
+        android:layout_marginBottom="10dp"
+        android:textColor="#555555">
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/heightInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/height"
+        app:layout_constraintWidth_percent="0.9"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/heightInput"
+        app:layout_constraintWidth_percent="0.85"
+        android:id="@+id/weight"
+        android:text="Weight (kg)"
+        android:layout_marginBottom="10dp"
+        android:textColor="#555555">
+
+    </TextView>
+    <EditText
+        android:id="@+id/weightInput"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weight"
+        app:layout_constraintWidth_percent="0.9"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+
+    <!-- Add Button for calculate -->
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10px"
+        android:background="@drawable/button_bmi"
+        android:text="calculate"
+        android:textColor="#ffffff"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weightInput"
+        app:layout_constraintWidth_percent="0.7" />
+
+    <!-- Add TextView for displaying BMI result -->
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bmiCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calculateButton"
+        app:layout_constraintWidth_percent="0.9">
+
+        <TextView
+            android:id="@+id/bmiResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:text="RESULT"
+            android:textColor="#3B67E8"
+            android:textSize="48sp"
+            android:letterSpacing="0.1"/>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Add TextView for displaying BMI category -->
+    <LinearLayout
+        android:id="@+id/bmiCategoryLayout"
+        android:layout_marginTop="10dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:weightSum="4"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bmiCard"
+        app:layout_constraintWidth_percent="0.7">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/thinView">
+            <TextView
+                android:id="@+id/Thin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Thin"
+                android:textColor="#000000"
+                android:padding="5dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/normalView">
+            <TextView
+                android:id="@+id/Normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Normal"
+                android:textColor="#000000"
+                android:padding="5dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/overView">
+            <TextView
+                android:id="@+id/Over"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Over"
+                android:textColor="#000000"
+                android:padding="5dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/fatView">
+            <TextView
+                android:id="@+id/Fat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Fat"
+                android:textColor="#000000"
+                android:padding="5dp"/>
+        </LinearLayout>
+        <!-- Repeat for other categories -->
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/bmiProgressBar"
+        android:layout_width="0px"
+        android:layout_height="30px"
+        android:layout_marginTop="12dp"
+        android:max="1000"
+        android:progressDrawable="@drawable/bar"
+        android:thumb="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bmiCategoryLayout"
+        app:layout_constraintWidth_percent="0.8"/>
+
+    <SeekBar
+        android:id="@+id/bmiProgressBarF"
+        android:layout_width="0px"
+        android:layout_height="30px"
+        android:layout_marginTop="12dp"
+        android:max="100"
+        android:progress="100"
+        android:progressDrawable="@drawable/bar"
+        android:thumb="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bmiProgressBar"
+        app:layout_constraintWidth_percent="0.8"/>
+
+
+    <LinearLayout
+        android:id="@+id/bmiValue"
+        android:layout_marginTop="10dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bmiProgressBarF"
+        app:layout_constraintWidth_percent="0.6">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18.5"
+                android:textColor="#51000000"
+                android:textSize="12dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24.0"
+                android:textColor="#51000000"
+                android:textSize="12dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="28.0"
+                android:textColor="#51000000"
+                android:textSize="12dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/suggestion"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:weightSum="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bmiValue"
+        android:layout_marginTop="6px"
+        app:layout_constraintWidth_percent="0.9">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#555555"
+            android:layout_weight="2"
+            android:paddingLeft="10dp"
+            android:text="Suggestion:" />
+
+        <TextView
+            android:id="@+id/weightSuggestion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="right|bottom"
+            android:layout_gravity="center_vertical"
+            android:textSize="16sp"
+            android:inputType="textMultiLine"
+            android:scrollbars="vertical"
+            android:textColor="#7d8196"/>
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
