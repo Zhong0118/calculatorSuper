@@ -104,6 +104,9 @@ public class TemperaActivity extends AppCompatActivity {
         button8 = findViewById(R.id.button8);
         button9 = findViewById(R.id.button9);
         button00 = findViewById(R.id.button00);
+
+        button00.setText("-");
+
         buttonDot = findViewById(R.id.buttonDot);
         clearAll = findViewById(R.id.buttonClearAll);
         clear = findViewById(R.id.buttonClear);
@@ -208,8 +211,11 @@ public class TemperaActivity extends AppCompatActivity {
         if (shouldResetInput || currentText.equals("0")) {
             expression = text; // 重置文本
             shouldResetInput = false;
+        } else if (text.equals(".") && expression.contains(".")){
+            ToastUtil.showShort(this, "can't input dot again");
+            return;
         } else {
-            expression = currentText + text; // 追加文本
+            expression = currentText + text; // 否则，追加新输入的文本
         }
 
         currentSelectedTextView.setText(expression);
@@ -234,6 +240,10 @@ public class TemperaActivity extends AppCompatActivity {
     }
 
     private void getResult() {
+        if (expression.charAt(0) != '-' && expression.contains("-")){
+            ToastUtil.showShort(this, "the negative symbol should be first");
+            return;
+        }
         if (currentSelectedTextView != null && !expression.isEmpty()) {
             double inputTemp = Double.parseDouble(expression);
             double degree;

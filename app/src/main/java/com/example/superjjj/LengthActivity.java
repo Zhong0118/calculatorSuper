@@ -14,6 +14,8 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.superjjj.util.ToastUtil;
+
 import java.text.DecimalFormat;
 
 public class LengthActivity extends AppCompatActivity {
@@ -313,8 +315,11 @@ public class LengthActivity extends AppCompatActivity {
         if (shouldResetInput || currentText.equals("0")) {
             expression = text; // 重置文本
             shouldResetInput = false;
+        } else if (text.equals(".") && expression.contains(".")){
+            ToastUtil.showShort(this, "can't input dot again");
+            return;
         } else {
-            expression = currentText + text; // 追加文本
+            expression = currentText + text; // 否则，追加新输入的文本
         }
 
         currentSelectedTextView.setText(expression);

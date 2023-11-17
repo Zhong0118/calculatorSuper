@@ -130,6 +130,9 @@ public class EnglishActivity extends AppCompatActivity {
         // 检查当前文本是否为"0"
         if (currentText.equals("0")) {
             expression = text; // 如果是"0"，则用新输入的文本替换
+        } else if (text.equals(".") && expression.contains(".")){
+            ToastUtil.showShort(this, "can't input dot again");
+            return;
         } else {
             expression = currentText + text; // 否则，追加新输入的文本
         }

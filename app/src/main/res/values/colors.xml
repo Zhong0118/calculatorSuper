@@ -7,4 +7,14 @@
     <color name="selectedTabTextColor">#570C94</color>
     <color name="tabIndicatorColor">#FF5722</color>
     <color name="tabTextColor">#9A7C32A2</color>
+
+
+    <color name="purple200">#FFBB86FC</color>
+    <color name="purple500">#FF6200EE</color>
+    <color name="purple700">#FF3700B3</color>
+    <color name="teal200">#FF03DAC5</color>
+    <color name="aqua">#FF04DF4F</color>
+    <color name="greenish_yellow">#FFA9FF29</color>
+    <color name="gray_background">#FFF5F5F6</color>
+    <color name="blue_custom">#FF3781F1</color>
 </resources>
