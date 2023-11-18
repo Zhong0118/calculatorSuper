@@ -102,13 +102,13 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="6px"
                 android:orientation="horizontal"
-                android:weightSum="5">
+                android:weightSum="3">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:paddingLeft="10dp"
                     android:text="MINUTE: "
                     android:textColor="#000000"
@@ -120,10 +120,10 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
                     android:gravity="right|bottom"
                     android:paddingRight="10dp"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:text="0 minute"/>
             </LinearLayout>
 
@@ -134,13 +134,13 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="6px"
                 android:orientation="horizontal"
-                android:weightSum="5">
+                android:weightSum="3">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:paddingLeft="10dp"
                     android:text="HOUR: "
                     android:textColor="#000000"
@@ -152,11 +152,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
                     android:gravity="right|bottom"
                     android:paddingRight="10dp"
-                    android:textSize="20sp"
-                    android:text="0 hour"/>
+                    android:textSize="16sp"
+                    android:text="0 hour 0 minute"/>
             </LinearLayout>
 
             <LinearLayout
@@ -166,13 +166,13 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="6px"
                 android:orientation="horizontal"
-                android:weightSum="5">
+                android:weightSum="3">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:paddingLeft="10dp"
                     android:text="DAY: "
                     android:textColor="#000000"
@@ -184,11 +184,43 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
                     android:gravity="right|bottom"
                     android:paddingRight="10dp"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:text="0 day"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/weekView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6px"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:text="WEEK: "
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/weekText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="2"
+                    android:gravity="right|bottom"
+                    android:paddingRight="10dp"
+                    android:textSize="16sp"
+                    android:text="0 week 0 day"/>
             </LinearLayout>
 
             <LinearLayout
@@ -198,13 +230,13 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="6px"
                 android:orientation="horizontal"
-                android:weightSum="5">
+                android:weightSum="3">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:paddingLeft="10dp"
                     android:text="MONTH: "
                     android:textColor="#000000"
@@ -216,11 +248,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
                     android:gravity="right|bottom"
                     android:paddingRight="10dp"
-                    android:textSize="20sp"
-                    android:text="0 month"/>
+                    android:textSize="16sp"
+                    android:text="0 month 0 day"/>
             </LinearLayout>
 
             <LinearLayout
@@ -230,13 +262,13 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="6px"
                 android:orientation="horizontal"
-                android:weightSum="5">
+                android:weightSum="3">
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:paddingLeft="10dp"
                     android:text="YEAR: "
                     android:textColor="#000000"
@@ -248,11 +280,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
                     android:gravity="right|bottom"
                     android:paddingRight="10dp"
-                    android:textSize="20sp"
-                    android:text="0 year"/>
+                    android:textSize="16sp"
+                    android:text="0 year 0 day"/>
             </LinearLayout>
 
         </LinearLayout>

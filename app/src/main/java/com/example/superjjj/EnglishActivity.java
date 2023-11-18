@@ -161,7 +161,7 @@ public class EnglishActivity extends AppCompatActivity {
     }
 
     private void getResult() {
-        if (expression.isEmpty()){
+        if (num.getText().toString().isEmpty()){
             ToastUtil.showShort(this, "please input data");
             return;
         }

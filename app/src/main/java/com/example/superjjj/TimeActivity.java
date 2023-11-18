@@ -23,6 +23,7 @@ import com.example.superjjj.util.ToastUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
@@ -37,6 +38,7 @@ public class TimeActivity extends AppCompatActivity {
     private Button calculate;
 
     private TextView dayT;
+    private TextView weekT;
     private TextView monthT;
     private TextView yearT;
     private TextView hourT;
@@ -50,7 +52,6 @@ public class TimeActivity extends AppCompatActivity {
 
     private Calendar startTime = Calendar.getInstance();
     private Calendar endTime = Calendar.getInstance();
-
 
 
     @Override
@@ -74,6 +75,7 @@ public class TimeActivity extends AppCompatActivity {
         calculate = findViewById(R.id.calculateTime);
 
         dayT = findViewById(R.id.dayText);
+        weekT = findViewById(R.id.weekText);
         monthT = findViewById(R.id.monthText);
         yearT = findViewById(R.id.yearText);
         hourT = findViewById(R.id.hourText);
@@ -111,7 +113,6 @@ public class TimeActivity extends AppCompatActivity {
             }
         });
     }
-
 
 
     private void showDateTimeDialog(final boolean isStart) {
@@ -174,46 +175,119 @@ public class TimeActivity extends AppCompatActivity {
     }
 
 
-
     @SuppressLint("SetTextI18n")
     private void calculateTimeGap() {
-
-        if (start.getText().equals("Select Start Time") || end.getText().equals("Select End Time")){
+        if (start.getText().equals("Select Start Time") || end.getText().equals("Select End Time")) {
             ToastUtil.showShort(this, "please choose time both");
             return;
         }
-
-        // 计算年、月、日差异
-        int yearsDifference = endTime.get(Calendar.YEAR) - startTime.get(Calendar.YEAR);
-        int monthsDifference = endTime.get(Calendar.MONTH) - startTime.get(Calendar.MONTH);
-        int daysDifference = endTime.get(Calendar.DAY_OF_MONTH) - startTime.get(Calendar.DAY_OF_MONTH);
-
-        // 如果结束月份小于开始月份，表示跨年了
-        if (monthsDifference < 0) {
-            yearsDifference--;
-            monthsDifference += 12; // 跨年调整
+        long millisecondsDifference;
+        // 计算两个时间点之间的毫秒差
+        if (endTime.getTimeInMillis() > startTime.getTimeInMillis()) {
+            millisecondsDifference = endTime.getTimeInMillis() - startTime.getTimeInMillis();
+        } else {
+            millisecondsDifference = startTime.getTimeInMillis() - endTime.getTimeInMillis();
         }
 
-        // 如果结束日期小于开始日期，表示跨月了
-        if (daysDifference < 0) {
-            monthsDifference--;
-            // 使用结束时间的上一个月最后一天，减去开始时间的日期，来得到跨月的日差异
-            Calendar tempCalendar = (Calendar) endTime.clone();
-            tempCalendar.add(Calendar.MONTH, -1);
-            daysDifference += tempCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        long totalMinutes = TimeUnit.MILLISECONDS.toMinutes(millisecondsDifference);
+        minuteT.setText(totalMinutes + " minute" + (totalMinutes == 1 || totalMinutes == 0 ? "" : "s"));
+
+        long hours = totalMinutes / 60;
+        long minutes = totalMinutes % 60;
+
+        hourT.setText(hours + " hour" + (hours == 1 || hours == 0 ? "" : "s")
+                + " " + minutes + " minute" + (minutes == 1 || minutes == 0 ? "" : "s"));
+
+        int startYear = startTime.get(Calendar.YEAR);
+        int startMonth = startTime.get(Calendar.MONTH) + 1;
+        int startDay = startTime.get(Calendar.DAY_OF_MONTH);
+
+        int endYear = endTime.get(Calendar.YEAR);
+        int endMonth = endTime.get(Calendar.MONTH) + 1;
+        int endDay = endTime.get(Calendar.DAY_OF_MONTH);
+
+        Calendar calendar1 = Calendar.getInstance();
+        calendar1.set(startYear, startMonth - 1, startDay);
+        Date date1 = calendar1.getTime();
+
+        Calendar calendar2 = Calendar.getInstance();
+        calendar2.set(endYear, endMonth - 1, endDay);
+        Date date2 = calendar2.getTime();
+
+
+        if (date1.after(date2)) {
+            Date temp = date1;
+            date1 = date2;
+            date2 = temp;
+        }
+        // date1是较早的时间，date2是较晚的时间
+
+        // 获取date1和date2的时间戳
+        long timestamp1 = date1.getTime();  // 较短的天的时间戳
+        long timestamp2 = date2.getTime();  // 较长的天的时间戳
+
+        long differenceInMilliseconds = Math.abs(timestamp2 - timestamp1);
+
+        long differenceInDays = TimeUnit.MILLISECONDS.toDays(differenceInMilliseconds);
+
+        calendar1.setTime(date1);
+        calendar2.setTime(date2);
+
+        int year1 = calendar1.get(Calendar.YEAR);
+        int month1 = calendar1.get(Calendar.MONTH) + 1;
+        int day1 = calendar1.get(Calendar.DAY_OF_MONTH);
+
+        int year2 = calendar2.get(Calendar.YEAR);
+        int month2 = calendar2.get(Calendar.MONTH) + 1;
+        int day2 = calendar2.get(Calendar.DAY_OF_MONTH);
+
+        dayT.setText(differenceInDays + " day" + (differenceInDays == 1 || differenceInDays == 0 ? "" : "s"));
+
+        long weeks = differenceInDays / 7;
+        long weekDays = differenceInDays % 7;
+
+        weekT.setText(weeks + " week" + (weeks == 1 || weeks == 0 ? "" : "s")
+                + " " + weekDays + " day" + (weekDays == 1 || weekDays == 0 ? "" : "s"));
+
+        int yearGap = year2 - year1;
+
+        if (month2 < month1 || (month2 == month1 && day2 < day1)) { // 表示不足一年的时候
+            yearGap--;
         }
 
-        // 如果月份差异小于0，表示跨年调整后仍然跨年了
-        if (monthsDifference < 0) {
-            yearsDifference--;
-            monthsDifference += 12; // 再次跨年调整
+        // 计算两年之间有多少闰年
+        int leapYears = 0;
+        for (int year = year1; year < year2; year++) {
+            if (leapYear(year)) {
+                leapYears++;
+            }
         }
 
-        // 更新 TextViews
-        yearT.setText(yearsDifference + " year" + (yearsDifference == 1 ? "" : "s"));
-        monthT.setText(monthsDifference + " month" + (monthsDifference == 1 ? "" : "s"));
-        dayT.setText(daysDifference + " day" + (daysDifference == 1 ? "" : "s"));
+        // 处理
+        if (leapYear(year1) && (month1 > 2)) {
+            leapYears--;
+        }
+        if (leapYear(year2) && (month2 > 2 || (month2 == 2 && day2 == 29))) {
+            leapYears++;
+        }
+        long yearDayGap = differenceInDays - 365 * yearGap - leapYears;
+        // 应该要减去leapYear，这样才能对应上，如果是加就越来越远了
+        yearT.setText(yearGap + " year" + (yearGap == 1 || yearGap == 0 ? "" : "s")
+                + " " + yearDayGap + " day" + (yearDayGap == 1 || yearDayGap == 0 ? "" : "s"));
+
 
 
     }
+
+    private boolean leapYear(int year) {
+        if (year % 400 == 0) {
+            return true;
+        } else if (year % 4 == 0 && year % 100 != 0) {
+            return true;
+        }
+        return false;
+    }
+
+
+
 }
