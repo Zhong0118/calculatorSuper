@@ -275,6 +275,23 @@ public class TimeActivity extends AppCompatActivity {
         yearT.setText(yearGap + " year" + (yearGap == 1 || yearGap == 0 ? "" : "s")
                 + " " + yearDayGap + " day" + (yearDayGap == 1 || yearDayGap == 0 ? "" : "s"));
 
+        int monthGap = (year2 - year1) * 12 + (month2 - month1);
+        // 得到总共的月差距
+        int dayGap;
+
+        if (day2 < day1) { // 不足一个月的时间，所以需要减一个gap
+            monthGap--;
+            // 减2是因为本来加了一，并且也需要往前一月
+            calendar1.set(year2, month2 - 2, 1); // 设置为前一个月的第一天
+            int daysInPreviousMonth = calendar1.getActualMaximum(Calendar.DAY_OF_MONTH);
+            // dayGap就是本月加上前一个月总天数减去上一个月的日子剩下的天数
+            dayGap = day2 + (daysInPreviousMonth - day1);
+        } else {
+            dayGap = day2 - day1;
+        }
+        monthT.setText(monthGap + " month" + (monthGap == 1 || monthGap == 0 ? "" : "s")
+                + " " + dayGap + " day" + (dayGap == 1 || dayGap == 0 ? "" : "s"));
+
 
 
     }
@@ -287,7 +304,5 @@ public class TimeActivity extends AppCompatActivity {
         }
         return false;
     }
-
-
 
 }

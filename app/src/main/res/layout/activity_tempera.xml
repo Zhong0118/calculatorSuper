@@ -28,7 +28,7 @@
 
     <LinearLayout
         android:id="@+id/CenView"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="200px"
         android:orientation="horizontal"
         android:weightSum="5"
@@ -39,7 +39,8 @@
         app:layout_constraintTop_toBottomOf="@id/dividerSystem"
         app:layout_constraintBottom_toTopOf="@id/dividerSystem2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.95">
 
         <TextView
             android:clickable="true"
@@ -88,7 +89,8 @@
         app:layout_constraintBottom_toTopOf="@id/converbutton1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_weight="3">
+        app:layout_constraintVertical_weight="3"
+        app:layout_constraintWidth_percent="0.95">
 
 
         <LinearLayout

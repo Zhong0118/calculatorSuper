@@ -26,4 +26,145 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <LinearLayout
+        android:id="@+id/DatePickers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerSystem"
+        app:layout_constraintWidth_percent="0.9">
+
+        <Button
+            android:id="@+id/buttonDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_time"
+            android:elevation="4dp"
+            android:text="Choose Time"
+            android:textColor="@color/gray_background"
+            android:textSize="18sp" />
+        <TextView
+            android:layout_marginBottom="6dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="please input data"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:textColor="#000000"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="9"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/day"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="numberDecimal"
+                android:gravity="right|bottom"
+                android:hint="0"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Ds"
+                android:gravity="bottom"
+                android:paddingLeft="2dp"
+                android:paddingBottom="10dp"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/hour"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="numberDecimal"
+                android:gravity="right|bottom"
+                android:hint="0"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Hs"
+                android:gravity="bottom"
+                android:paddingLeft="2dp"
+                android:paddingBottom="10dp"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/minute"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:inputType="numberDecimal"
+                android:gravity="right|bottom"
+                android:hint="0"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Ms"
+                android:gravity="bottom"
+                android:paddingLeft="2dp"
+                android:paddingBottom="10dp"
+                android:textSize="18dp"/>
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/calculateDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="80dp"
+            android:paddingRight="80dp"
+            android:layout_marginTop="10px"
+            android:background="@drawable/button_bmi"
+            android:text="calculate"
+            android:layout_gravity="center"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dateCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/DatePickers"
+        app:layout_constraintWidth_percent="0.9">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center"
+            android:text="xxxx-xx-xx xx:xx"
+            android:textColor="#3B67E8"
+            android:textSize="48sp"
+            android:letterSpacing="0.1"/>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/dateCard"
+        android:layout_margin="16dp"
+        android:gravity="center"
+        android:text="you can type in the days, hours, minute to get the object time, all of them could be 0"
+        android:textColor="#979595"
+        android:textSize="14dp"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
