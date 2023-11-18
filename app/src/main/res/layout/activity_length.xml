@@ -65,7 +65,8 @@
             android:clickable="true"
             android:focusable="true"
             android:gravity="right|bottom"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:paddingRight="6dp"/>
     </LinearLayout>
 
     <View
@@ -135,7 +136,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -170,7 +172,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -205,7 +208,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
 
@@ -241,7 +245,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
 
@@ -277,7 +282,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -312,7 +318,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
 
@@ -348,7 +355,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
 
@@ -384,7 +392,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
 
@@ -420,7 +429,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
 
@@ -456,7 +466,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -491,7 +502,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -526,7 +538,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -561,7 +574,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
 
@@ -597,7 +611,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -632,7 +647,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -667,7 +683,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -702,7 +719,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -737,7 +755,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -772,7 +791,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
 
@@ -808,7 +828,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
         </LinearLayout>
 

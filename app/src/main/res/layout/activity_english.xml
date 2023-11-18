@@ -73,7 +73,8 @@
                 android:textSize="20sp"
                 android:textColor="@color/button_one"
                 android:inputType="textMultiLine"
-                android:scrollbars="vertical"/>
+                android:scrollbars="vertical"
+                android:paddingRight="6dp"/>
         </LinearLayout>
 
         <View
@@ -121,7 +122,8 @@
                 android:layout_gravity="center_vertical"
                 android:textSize="16sp"
                 android:inputType="textMultiLine"
-                android:scrollbars="vertical"/>
+                android:scrollbars="vertical"
+                android:paddingRight="6dp"/>
         </LinearLayout>
 
     </LinearLayout>

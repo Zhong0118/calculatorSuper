@@ -64,7 +64,8 @@
             android:layout_weight="3"
             android:gravity="right|bottom"
             android:layout_gravity="center_vertical"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:paddingRight="6dp"/>
     </LinearLayout>
 
     <View
@@ -135,7 +136,8 @@
                     android:layout_weight="3"
                     android:gravity="right|bottom"
                     android:layout_gravity="center_vertical"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/KelView"
@@ -169,7 +171,8 @@
                     android:layout_weight="3"
                     android:gravity="right|bottom"
                     android:layout_gravity="center_vertical"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/RanView"
@@ -203,7 +206,8 @@
                     android:layout_weight="3"
                     android:gravity="right|bottom"
                     android:layout_gravity="center_vertical"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/ReaView"
@@ -237,7 +241,8 @@
                     android:layout_weight="3"
                     android:gravity="right|bottom"
                     android:layout_gravity="center_vertical"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
             </LinearLayout>
 
         </LinearLayout>

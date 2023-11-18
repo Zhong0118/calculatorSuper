@@ -15,6 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <View
         android:id="@+id/dividerSystem"
         android:layout_width="match_parent"
@@ -22,9 +23,308 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="#000"
-        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/header" />
+
+    <LinearLayout
+        android:id="@+id/m2View"
+        android:layout_width="0dp"
+        android:layout_height="200px"
+        android:layout_marginTop="6px"
+        android:layout_marginBottom="4px"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toTopOf="@id/dividerSystem2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerSystem"
+        app:layout_constraintWidth_percent="0.95">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingLeft="10dp"
+            android:text="center²-m²"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/m2Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="right|bottom"
+            android:textSize="20sp"
+            android:paddingRight="6dp"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/dividerSystem2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="6px"
+        android:background="#585877"
+        app:layout_constraintBottom_toTopOf="@id/middleScroll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/m2View" />
+
+    <ScrollView
+        android:id="@+id/middleScroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/converbutton1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerSystem2"
+        app:layout_constraintVertical_weight="3"
+        app:layout_constraintWidth_percent="0.95">
+
+
+        <LinearLayout
+            android:id="@+id/middleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <LinearLayout
+                android:id="@+id/haView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="6px"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingLeft="10dp"
+                    android:text="hectare-ha"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/haText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|bottom"
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/aView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="6px"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingLeft="10dp"
+                    android:text="acre-a"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/aText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|bottom"
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/acView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="6px"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingLeft="10dp"
+                    android:text="acre-ac"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/acText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|bottom"
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/rdView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="6px"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingLeft="10dp"
+                    android:text="rod²-rd²"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/rdText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|bottom"
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/qingView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="6px"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingLeft="10dp"
+                    android:text="顷-qing"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/qingText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|bottom"
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/muView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="6px"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingLeft="10dp"
+                    android:text="亩-mu"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/muText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|bottom"
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
     <include
@@ -35,7 +335,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header" />
+        app:layout_constraintTop_toBottomOf="@id/middleScroll"
+        app:layout_constraintVertical_weight="4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

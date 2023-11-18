@@ -15,6 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <View
         android:id="@+id/dividerSystem"
         android:layout_width="match_parent"
@@ -22,9 +23,416 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:background="#000"
-        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/header" />
+
+    <LinearLayout
+        android:id="@+id/m3View"
+        android:layout_width="0dp"
+        android:layout_height="200px"
+        android:layout_marginTop="6px"
+        android:layout_marginBottom="4px"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintBottom_toTopOf="@id/dividerSystem2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerSystem"
+        app:layout_constraintWidth_percent="0.95">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingLeft="10dp"
+            android:text="center³-m³"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/m3Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="right|bottom"
+            android:textSize="20sp"
+            android:paddingRight="6dp"/>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/dividerSystem2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="6px"
+        android:background="#585877"
+        app:layout_constraintBottom_toTopOf="@id/middleScroll"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/m3View" />
+
+    <ScrollView
+        android:id="@+id/middleScroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/converbutton1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dividerSystem2"
+        app:layout_constraintVertical_weight="3"
+        app:layout_constraintWidth_percent="0.95">
+
+
+        <LinearLayout
+            android:id="@+id/middleLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <LinearLayout
+                android:id="@+id/hlView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="6px"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingLeft="10dp"
+                    android:text="hectolitre-hl"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/hlText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|bottom"
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="6px"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingLeft="10dp"
+                    android:text="litre-l"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|bottom"
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/af3View"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="6px"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingLeft="10dp"
+                    android:text="acreFoot-af³"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/af3Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|bottom"
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ft3View"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="6px"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingLeft="10dp"
+                    android:text="feet³-ft³"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ft3Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|bottom"
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/in3View"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="6px"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingLeft="10dp"
+                    android:text="inch³-in³"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/in3Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|bottom"
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ukgalView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="6px"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingLeft="10dp"
+                    android:text="uk-gal"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ukgalText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|bottom"
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/usgalView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="6px"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingLeft="10dp"
+                    android:text="us-gal"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/usgalText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|bottom"
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ukozView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="6px"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingLeft="10dp"
+                    android:text="uk-oz"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ukozText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|bottom"
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/usozView"
+                android:layout_width="match_parent"
+                android:layout_height="200px"
+                android:layout_marginTop="6px"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingLeft="10dp"
+                    android:text="us-oz"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/usozText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="right|bottom"
+                    android:textSize="20sp"
+                    android:paddingRight="6dp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 
     <include
@@ -35,7 +443,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header" />
+        app:layout_constraintTop_toBottomOf="@id/middleScroll"
+        app:layout_constraintVertical_weight="4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
