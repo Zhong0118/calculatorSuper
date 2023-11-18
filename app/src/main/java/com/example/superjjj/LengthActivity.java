@@ -344,6 +344,10 @@ public class LengthActivity extends AppCompatActivity {
     }
 
     private void getResult() {
+        if (expression.isEmpty()){
+            ToastUtil.showShort(this, "please input data");
+            return;
+        }
         if (currentSelectedTextView != null && !expression.isEmpty()) {
             double inputTemp = Double.parseDouble(expression);
             double length;

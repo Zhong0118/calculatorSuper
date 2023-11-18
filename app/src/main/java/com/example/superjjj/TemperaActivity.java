@@ -240,6 +240,10 @@ public class TemperaActivity extends AppCompatActivity {
     }
 
     private void getResult() {
+        if (expression.isEmpty()){
+            ToastUtil.showShort(this, "please input data");
+            return;
+        }
         if (expression.charAt(0) != '-' && expression.contains("-")){
             ToastUtil.showShort(this, "the negative symbol should be first");
             return;

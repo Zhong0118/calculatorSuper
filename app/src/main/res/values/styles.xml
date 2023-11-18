@@ -54,6 +54,12 @@
 
     </style>
 
+    <style name="CustomDatePickerDialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="colorAccent">@color/selectedTabTextColor</item>
+        <item name="colorPrimary">@color/selectedTabTextColor</item>
+    </style>
+
+
 
 
 </resources>

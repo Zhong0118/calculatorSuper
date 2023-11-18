@@ -161,6 +161,10 @@ public class EnglishActivity extends AppCompatActivity {
     }
 
     private void getResult() {
+        if (expression.isEmpty()){
+            ToastUtil.showShort(this, "please input data");
+            return;
+        }
         // 分割整数和小数部分
         String[] parts = expression.split("\\.");
         String integerPart = parts.length > 0 ? parts[0] : "";

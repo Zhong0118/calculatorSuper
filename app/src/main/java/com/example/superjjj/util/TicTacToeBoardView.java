@@ -60,34 +60,6 @@ public class TicTacToeBoardView extends View {
         init();
     }
 
-
-    private float animationProgress = 0f;
-    private boolean isAnimating = false;
-
-    public void startAnimation() {
-        isAnimating = true;
-        animationProgress = 0f;
-        animateDrawing();
-    }
-
-    private void animateDrawing() {
-        if (isAnimating) {
-            animationProgress += 0.05f; // 控制动画速度
-            if (animationProgress > 1) {
-                isAnimating = false;
-                animationProgress = 1;
-            }
-            invalidate();
-            postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    animateDrawing();
-                }
-            }, 16); // 约每秒60帧
-        }
-    }
-
-
     private void init() {
         paint.setColor(Color.GRAY);
         paint.setStrokeWidth(5f);

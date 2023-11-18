@@ -300,6 +300,10 @@ public class SystemActivity extends AppCompatActivity {
     }
 
     private void getResult() {
+        if (expression.isEmpty()){
+            ToastUtil.showShort(this, "please input data");
+            return;
+        }
         if (currentSelectedTextView != null && !expression.isEmpty()) {
             try {
                 long decimalValue;
