@@ -11,310 +11,344 @@
         android:layout_height="match_parent"
         android:columnCount="3"
         android:orientation="horizontal"
-        android:rowCount="4"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:rowCount="4">
 
         <LinearLayout
             android:id="@+id/lengthView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_margin="4dp"
-            android:background="?attr/selectableItemBackground">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10px"
                 android:layout_width="70sp"
                 android:layout_height="70sp"
+                android:layout_margin="10px"
                 android:src="@drawable/length" />
 
             <TextView
-                android:layout_marginTop="5px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5px"
                 android:text="length"
-                android:textSize="25sp"/>
+                android:textSize="25sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/areaView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_margin="4dp"
-            android:background="?attr/selectableItemBackground">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10px"
                 android:layout_width="70sp"
                 android:layout_height="70sp"
+                android:layout_margin="10px"
                 android:src="@drawable/mianji" />
 
             <TextView
-                android:layout_marginTop="5px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5px"
                 android:text="area"
-                android:textSize="25sp"/>
+                android:textSize="25sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/volumeView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_margin="4dp"
-            android:background="?attr/selectableItemBackground">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10px"
                 android:layout_width="70sp"
                 android:layout_height="70sp"
+                android:layout_margin="10px"
                 android:src="@drawable/tiji" />
 
             <TextView
-                android:layout_marginTop="5px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5px"
                 android:text="volume"
-                android:textSize="25sp"/>
+                android:textSize="25sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/weightView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_margin="4dp"
-            android:background="?attr/selectableItemBackground">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10px"
                 android:layout_width="70sp"
                 android:layout_height="70sp"
+                android:layout_margin="10px"
                 android:src="@drawable/weight" />
 
             <TextView
-                android:layout_marginTop="5px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5px"
                 android:text="weight"
-                android:textSize="25sp"/>
+                android:textSize="25sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/systemView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_margin="4dp"
-            android:background="?attr/selectableItemBackground">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10px"
                 android:layout_width="70sp"
                 android:layout_height="70sp"
+                android:layout_margin="10px"
                 android:src="@drawable/jinzhi" />
 
             <TextView
-                android:layout_marginTop="5px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5px"
                 android:text="system"
-                android:textSize="25sp"/>
+                android:textSize="25sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/temperaView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_margin="4dp"
-            android:background="?attr/selectableItemBackground">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10px"
                 android:layout_width="70sp"
                 android:layout_height="70sp"
+                android:layout_margin="10px"
                 android:src="@drawable/wendu" />
 
             <TextView
-                android:layout_marginTop="5px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5px"
                 android:text="tempera"
-                android:textSize="25sp"/>
+                android:textSize="25sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/BMIView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_margin="4dp"
-            android:background="?attr/selectableItemBackground">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10px"
                 android:layout_width="70sp"
                 android:layout_height="70sp"
+                android:layout_margin="10px"
                 android:src="@drawable/bmi" />
 
             <TextView
-                android:layout_marginTop="5px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5px"
                 android:text="BMI"
-                android:textSize="25sp"/>
+                android:textSize="25sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/englishView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_margin="4dp"
-            android:background="?attr/selectableItemBackground">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10px"
                 android:layout_width="70sp"
                 android:layout_height="70sp"
+                android:layout_margin="10px"
                 android:src="@drawable/english" />
 
             <TextView
-                android:layout_marginTop="5px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5px"
                 android:text="english"
-                android:textSize="25sp"/>
+                android:textSize="25sp" />
         </LinearLayout>
-
-
 
 
         <LinearLayout
             android:id="@+id/tictactoeView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_margin="4dp"
-            android:background="?attr/selectableItemBackground">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10px"
                 android:layout_width="70sp"
                 android:layout_height="70sp"
-                android:src="@drawable/jing"/>
+                android:layout_margin="10px"
+                android:src="@drawable/jing" />
 
             <TextView
-                android:layout_marginTop="5px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:text="tictactoe"/>
+                android:layout_marginTop="5px"
+                android:text="tictactoe"
+                android:textSize="25sp" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/gapView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_margin="4dp"
-            android:background="?attr/selectableItemBackground">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10px"
                 android:layout_width="70sp"
                 android:layout_height="70sp"
-                android:src="@drawable/timelone"/>
+                android:layout_margin="10px"
+                android:src="@drawable/timelone" />
 
             <TextView
-                android:layout_marginTop="5px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:text="time gap"/>
+                android:layout_marginTop="5px"
+                android:text="time gap"
+                android:textSize="25sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/timeView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_columnWeight="1"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
             android:layout_gravity="fill"
-            android:orientation="vertical"
-            android:gravity="center"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:layout_margin="4dp"
-            android:background="?attr/selectableItemBackground">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_margin="10px"
                 android:layout_width="70sp"
                 android:layout_height="70sp"
-                android:src="@drawable/timegap"/>
+                android:layout_margin="10px"
+                android:src="@drawable/timegap" />
 
             <TextView
-                android:layout_marginTop="5px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:text="date"/>
+                android:layout_marginTop="5px"
+                android:text="date"
+                android:textSize="25sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/gameView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="4dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="70sp"
+                android:layout_height="70sp"
+                android:layout_margin="10px"
+                android:src="@drawable/game" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5px"
+                android:text="2048"
+                android:textSize="25sp" />
         </LinearLayout>
 
 

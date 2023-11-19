@@ -17,4 +17,19 @@
     <color name="greenish_yellow">#FFA9FF29</color>
     <color name="gray_background">#FFF5F5F6</color>
     <color name="blue_custom">#FF3781F1</color>
+
+    <color name="backgroundColor2">#FDF5E6</color>
+    <color name="backgroundColor4">#FFE4B5</color>
+    <color name="backgroundColor8">#FFE4C4</color>
+    <color name="backgroundColor16">#FFDAB9</color>
+    <color name="backgroundColor32">#FF7F50</color>
+    <color name="backgroundColor64">#FF4500</color>
+    <color name="backgroundColor128">#FF8C00</color>
+    <color name="backgroundColor256">#FFD700</color>
+    <color name="backgroundColor512">#9ACD32</color>
+    <color name="backgroundColor1024">#483D8B</color>
+    <color name="backgroundColor2048">#4B0082</color>
+    <color name="backgroundColorBiggerThan2048">#000000</color>
+
+    <color name="btnColor">#cdc1b5</color>
 </resources>

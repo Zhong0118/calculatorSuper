@@ -35,6 +35,7 @@ public class conver extends Fragment {
     LinearLayout l9;
     LinearLayout l10;
     LinearLayout l11;
+    LinearLayout l12;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -96,6 +97,7 @@ public class conver extends Fragment {
         l9 = view.findViewById(R.id.tictactoeView);
         l10 = view.findViewById(R.id.gapView);
         l11 = view.findViewById(R.id.timeView);
+        l12 = view.findViewById(R.id.gameView);
 
         // 设置点击事件
         l1.setOnClickListener(new View.OnClickListener() {
@@ -201,6 +203,16 @@ public class conver extends Fragment {
             public void onClick(View v) {
                 // 启动新的Activity
                 Intent intent = new Intent(getActivity(), DateActivity.class);
+                startActivity(intent,
+                        ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
+            }
+        });
+
+        l12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 启动新的Activity
+                Intent intent = new Intent(getActivity(), Game2048Activity.class);
                 startActivity(intent,
                         ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
             }

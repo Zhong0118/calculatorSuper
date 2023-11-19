@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".DateActivity"></activity>
+        <activity android:name=".Game2048Activity"></activity>
+        <activity android:name=".DateActivity" />
         <activity android:name=".TimeActivity" />
         <activity android:name=".jing" />
         <activity android:name=".EnglishActivity" />
