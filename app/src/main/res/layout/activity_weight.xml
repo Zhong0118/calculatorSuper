@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fbf8ef"
     tools:context=".WeightActivity">
 
     <include
@@ -65,8 +66,8 @@
             android:clickable="true"
             android:focusable="true"
             android:gravity="right|bottom"
-            android:textSize="20sp"
-            android:paddingRight="6dp"/>
+            android:paddingRight="6dp"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <View
@@ -135,8 +136,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp"
-                    android:paddingRight="6dp"/>
+                    android:paddingRight="6dp"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -171,8 +172,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp"
-                    android:paddingRight="6dp"/>
+                    android:paddingRight="6dp"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -207,8 +208,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp"
-                    android:paddingRight="6dp"/>
+                    android:paddingRight="6dp"
+                    android:textSize="20sp" />
             </LinearLayout>
 
 
@@ -244,8 +245,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp"
-                    android:paddingRight="6dp"/>
+                    android:paddingRight="6dp"
+                    android:textSize="20sp" />
             </LinearLayout>
 
 
@@ -281,8 +282,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp"
-                    android:paddingRight="6dp"/>
+                    android:paddingRight="6dp"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -317,14 +318,9 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp"
-                    android:paddingRight="6dp"/>
+                    android:paddingRight="6dp"
+                    android:textSize="20sp" />
             </LinearLayout>
-
-
-
-
-
 
 
             <LinearLayout
@@ -359,9 +355,10 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp"
-                    android:paddingRight="6dp"/>
+                    android:paddingRight="6dp"
+                    android:textSize="20sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/danView"
                 android:layout_width="match_parent"
@@ -394,9 +391,10 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp"
-                    android:paddingRight="6dp"/>
+                    android:paddingRight="6dp"
+                    android:textSize="20sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/jinView"
                 android:layout_width="match_parent"
@@ -429,9 +427,10 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp"
-                    android:paddingRight="6dp"/>
+                    android:paddingRight="6dp"
+                    android:textSize="20sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/qianView"
                 android:layout_width="match_parent"
@@ -464,9 +463,10 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp"
-                    android:paddingRight="6dp"/>
+                    android:paddingRight="6dp"
+                    android:textSize="20sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/liangView"
                 android:layout_width="match_parent"
@@ -499,8 +499,8 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:gravity="right|bottom"
-                    android:textSize="20sp"
-                    android:paddingRight="6dp"/>
+                    android:paddingRight="6dp"
+                    android:textSize="20sp" />
             </LinearLayout>
 
 
