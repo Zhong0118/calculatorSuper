@@ -161,6 +161,12 @@ public class GameView extends GridLayout {
                             needAddCard = true;
                         } else if (cardsMap[y][x].equal(cardsMap[y][x1])) {
                             cardsMap[y][x].setNum(cardsMap[y][x].getNum() * 2);
+
+                            cardsMap[y][x].setScaleX((float) 1.1);
+                            cardsMap[y][x].setScaleY((float) 1.1);
+                            cardsMap[y][x].animate().scaleX(1).scaleY(1).setDuration(200).start();
+
+
                             score += cardsMap[y][x].getNum() * 2;
                             cardsMap[y][x1].setNum(0);
                             needAddCard = true;
@@ -197,6 +203,10 @@ public class GameView extends GridLayout {
 
                         } else if (cardsMap[y][x].equal(cardsMap[y][x1])) {
                             cardsMap[y][x].setNum(cardsMap[y][x].getNum() * 2);
+
+                            cardsMap[y][x].setScaleX((float) 1.1);
+                            cardsMap[y][x].setScaleY((float) 1.1);
+                            cardsMap[y][x].animate().scaleX(1).scaleY(1).setDuration(200).start();
                             score += cardsMap[y][x].getNum() * 2;
 
                             cardsMap[y][x1].setNum(0);
@@ -235,6 +245,10 @@ public class GameView extends GridLayout {
 
                         } else if (cardsMap[y][x].equal(cardsMap[y1][x])) {
                             cardsMap[y][x].setNum(cardsMap[y][x].getNum() * 2);
+
+                            cardsMap[y][x].setScaleX((float) 1.1);
+                            cardsMap[y][x].setScaleY((float) 1.1);
+                            cardsMap[y][x].animate().scaleX(1).scaleY(1).setDuration(200).start();
                             score += cardsMap[y][x].getNum() * 2;
 
                             cardsMap[y1][x].setNum(0);
@@ -273,6 +287,10 @@ public class GameView extends GridLayout {
 
                         } else if (cardsMap[y][x].equal(cardsMap[y1][x])) {
                             cardsMap[y][x].setNum(cardsMap[y][x].getNum() * 2);
+
+                            cardsMap[y][x].setScaleX((float) 1.1);
+                            cardsMap[y][x].setScaleY((float) 1.1);
+                            cardsMap[y][x].animate().scaleX(1).scaleY(1).setDuration(200).start();
                             score += cardsMap[y][x].getNum() * 2;
 
                             cardsMap[y1][x].setNum(0);
@@ -311,13 +329,16 @@ public class GameView extends GridLayout {
                 }
             }
         }
-        // 表示全都是数字，也表示输了
         if (emptyPoints.isEmpty()) {
             return; // 没有空位时直接返回
         }
         // 随机得到一个点的位置
         Point randomPoint = emptyPoints.get(new Random().nextInt(emptyPoints.size()));
-        cardsMap[randomPoint.y][randomPoint.x].setNum(Math.random() > 0.15 ? 2 : 4); // 90%概率生成2，10%概率生成4
+        cardsMap[randomPoint.y][randomPoint.x].setNum(Math.random() > 0.15 ? 2 : 4); // 85%概率生成2，10%概率生成4
+        // 动画
+        cardsMap[randomPoint.y][randomPoint.x].setScaleX((float) 0.4);
+        cardsMap[randomPoint.y][randomPoint.x].setScaleY((float) 0.4);
+        cardsMap[randomPoint.y][randomPoint.x].animate().scaleX(1).scaleY(1).setDuration(300).start();
 
 
     }

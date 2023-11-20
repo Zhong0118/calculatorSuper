@@ -70,6 +70,7 @@ public class Card extends FrameLayout {
             label.setTextSize(16);
             label.setTextColor(Color.parseColor("#f0f0f0")); // For darker backgrounds
         } else {
+            label.setTextSize(32);
             label.setTextColor(Color.parseColor("#5f5d5d"));
         }
     }
