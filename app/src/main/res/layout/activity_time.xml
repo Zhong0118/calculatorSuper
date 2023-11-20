@@ -104,7 +104,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="6px"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="2">
 
                 <TextView
                     android:layout_width="0dp"
@@ -122,7 +122,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:gravity="right|bottom"
                     android:paddingRight="10dp"
                     android:textSize="16sp"
@@ -136,7 +136,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="6px"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="2">
 
                 <TextView
                     android:layout_width="0dp"
@@ -154,7 +154,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:gravity="right|bottom"
                     android:paddingRight="10dp"
                     android:textSize="16sp"
@@ -168,7 +168,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="6px"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="2">
 
                 <TextView
                     android:layout_width="0dp"
@@ -186,7 +186,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:gravity="right|bottom"
                     android:paddingRight="10dp"
                     android:textSize="16sp"
@@ -200,7 +200,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="6px"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="2">
 
                 <TextView
                     android:layout_width="0dp"
@@ -218,7 +218,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:gravity="right|bottom"
                     android:paddingRight="10dp"
                     android:textSize="16sp"
@@ -232,7 +232,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="6px"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="2">
 
                 <TextView
                     android:layout_width="0dp"
@@ -250,7 +250,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:gravity="right|bottom"
                     android:paddingRight="10dp"
                     android:textSize="16sp"
@@ -264,7 +264,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="6px"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="2">
 
                 <TextView
                     android:layout_width="0dp"
@@ -282,7 +282,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="2"
+                    android:layout_weight="1"
                     android:gravity="right|bottom"
                     android:paddingRight="10dp"
                     android:textSize="16sp"

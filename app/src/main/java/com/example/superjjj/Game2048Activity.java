@@ -3,6 +3,7 @@ package com.example.superjjj;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.transition.Slide;
 import android.util.DisplayMetrics;
@@ -13,6 +14,9 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
+
+import com.example.superjjj.util.GameView;
+import com.example.superjjj.util.ToastUtil;
 
 public class Game2048Activity extends AppCompatActivity {
 
@@ -26,8 +30,11 @@ public class Game2048Activity extends AppCompatActivity {
     private Button restart;
     private Button undo;
 
-    private GridLayout gridLayout;
+    private GameView gridLayout;
     private final int GRID_SIZE = 4;
+    private static final String PREFS_NAME = "Game2048Prefs";
+    private static final String HIGH_SCORE = "HighScore";
+    int highScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,48 +70,51 @@ public class Game2048Activity extends AppCompatActivity {
         undo = findViewById(R.id.undo);
 
         gridLayout = findViewById(R.id.gameGrid);
-        gridLayout.post(new Runnable() {
+
+        setupListeners();
+
+        highScore = getHighScore();
+        height_score.setText(String.valueOf(highScore));
+
+    }
+
+    private void setupListeners() {
+        restart.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
-                createGrid(gridLayout.getWidth());
+            public void onClick(View v) {
+                gridLayout.start(); // 调用GameView中的startNewGame方法
+                // 更新得分等UI逻辑
             }
         });
 
+        undo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gridLayout.undo();
+            }
+        });
     }
 
-    private void createGrid(int width) {
-
-        // 格子间的margin
-        int tileMargin = getResources().getDimensionPixelSize(R.dimen.tile_margin); // 需要在dimens.xml定义
-        int paddingTotal = 2 * getResources().getDimensionPixelSize(R.dimen.padding); // 获取总padding（左右两侧）
-        int tileSize = (width - paddingTotal - tileMargin *  3) / GRID_SIZE;
-
-        for (int row = 0; row < GRID_SIZE; row++) {
-            for (int col = 0; col < GRID_SIZE; col++) {
-                TextView tile = new TextView(this);
-                tile.setWidth(tileSize);
-                tile.setHeight(tileSize);
-                tile.setGravity(Gravity.CENTER);
-                tile.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
-                tile.setBackground(ContextCompat.getDrawable(this, R.drawable.gamebtn));
-
-                // 可以为每个tile设置标签或值
-                // 00 01 02 03
-                // 10 11 12 13
-                // 20 21 22 23
-                // 30 31 32 33
-                tile.setTag(R.id.tag_row, row);
-                tile.setTag(R.id.tag_col, col);
-
-                // 添加到GridLayout
-                gridLayout.addView(tile);
-
-                // 设置边距
-                GridLayout.LayoutParams params = (GridLayout.LayoutParams) tile.getLayoutParams();
-                int halfMargin = tileMargin / 2;
-                params.setMargins(halfMargin, halfMargin, halfMargin, halfMargin );
-                tile.setLayoutParams(params);
-            }
+    public void updateScore(int newScore) {
+        score.setText(String.valueOf(newScore));
+        if (highScore < newScore) {
+            highScore = newScore;
+            height_score.setText(String.valueOf(newScore));
+            setHighScore(newScore); // 保存新的最高分
         }
     }
+
+
+    private int getHighScore() {
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        return prefs.getInt(HIGH_SCORE, 0); // 默认为0
+    }
+
+    private void setHighScore(int score) {
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(HIGH_SCORE, score);
+        editor.apply();
+    }
+
 }
