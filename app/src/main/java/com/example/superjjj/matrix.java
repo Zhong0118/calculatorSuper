@@ -9,6 +9,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.example.superjjj.util.MatrixChooseUtil;
+import com.example.superjjj.util.ToastUtil;
 
 
 /**
@@ -30,6 +36,18 @@ public class matrix extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+
+
+
+    private View view;
+    private Spinner matrixSpinner;
+    private int choise;
+
+
+
+
+
 
     public matrix() {
         // Required empty public constructor
@@ -63,11 +81,72 @@ public class matrix extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_matrix, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_matrix, container, false);
+
+        matrixSpinner = view.findViewById(R.id.matrixChoose);
+        MatrixChooseUtil.initSpinner(getActivity(), matrixSpinner);
+
+        // 设置默认选项为第一项
+        matrixSpinner.setSelection(0);
+
+        matrixSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                String selectedOperation = (String) parentView.getItemAtPosition(position);
+                choise = MatrixChooseUtil.operationMap.get(selectedOperation);
+                ToastUtil.showShort(getActivity(), "operation is " + selectedOperation);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+
+        return view;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

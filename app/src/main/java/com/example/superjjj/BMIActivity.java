@@ -114,7 +114,7 @@ public class BMIActivity extends AppCompatActivity {
             float heightValue = Float.parseFloat(height) / 100; // 身高转换成米
             float weightValue = Float.parseFloat(weight);
 
-            if (heightValue < 0.01 || weightValue > 200){
+            if (heightValue < 0.01 || weightValue > 300 || heightValue > 400 || weightValue < 0.01){
                 ToastUtil.showShort(this, "the value is unreasonable");
             } else {
                 float bmiValue = weightValue / (heightValue * heightValue);

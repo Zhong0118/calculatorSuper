@@ -207,6 +207,10 @@ public class TemperaActivity extends AppCompatActivity {
 
     private void appendTextToCurrentSelectedTextView(String text) {
         String currentText = currentSelectedTextView.getText().toString();
+        if (text.equals("-") && expression.contains("-")){
+            ToastUtil.showShort(this, "you can't type - again");
+            return;
+        }
 
         if (shouldResetInput || currentText.equals("0")) {
             expression = text; // 重置文本
@@ -246,6 +250,10 @@ public class TemperaActivity extends AppCompatActivity {
         }
         if (expression.charAt(0) != '-' && expression.contains("-")){
             ToastUtil.showShort(this, "the negative symbol should be first");
+            return;
+        }
+        if (expression.charAt(0) == '-' && expression.length() == 1){
+            ToastUtil.showShort(this, "please type number");
             return;
         }
         if (currentSelectedTextView != null && !expression.isEmpty()) {

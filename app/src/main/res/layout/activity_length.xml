@@ -53,7 +53,7 @@
             android:clickable="true"
             android:focusable="true"
             android:paddingLeft="10dp"
-            android:text="center-m"
+            android:text="meter-m"
             android:textColor="#000000"
             android:textSize="24sp"
             android:textStyle="bold" />
