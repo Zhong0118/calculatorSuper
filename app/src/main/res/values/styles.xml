@@ -37,6 +37,13 @@
         <item name="android:dropDownSelector">@color/colorAccent</item>
     </style>
 
+    <style name="SpinnerStyle2">
+        <item name="android:background">@drawable/matrixsnipper</item>
+        <item name="android:popupBackground">@drawable/matrixsnipper2</item>
+        <item name="android:dropDownSelector">@color/colorAccent</item>
+        <item name="android:dropDownVerticalOffset">48sp</item>
+    </style>
+
     <style name="MyTabLayout" parent="Widget.Design.TabLayout">
         <item name="tabTextAppearance">@style/MyTabTextAppearance</item>
         <item name="tabSelectedTextColor">@color/selectedTabTextColor</item>
@@ -57,6 +64,17 @@
     <style name="CustomDatePickerDialog" parent="Theme.MaterialComponents.Light.Dialog">
         <item name="colorAccent">@color/selectedTabTextColor</item>
         <item name="colorPrimary">@color/selectedTabTextColor</item>
+    </style>
+
+    <style name="matrixText">
+        <item name="android:textStyle">italic</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:paddingTop">4sp</item>
+        <item name="android:paddingBottom">4sp</item>
+    </style>
+
+    <style name="matrixGrid">
+        <item name="android:gravity">center_horizontal</item>
     </style>
 
 

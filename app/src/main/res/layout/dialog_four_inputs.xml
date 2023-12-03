@@ -1,0 +1,155 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/matrixALayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/matrixBLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/row1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="Row_A"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/editTextRow1"
+            app:layout_constraintEnd_toStartOf="@+id/col1"
+            app:layout_constraintHorizontal_weight="1"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/col1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="Col_A"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/editTextCol1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/row1"
+
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextRow1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:gravity="center"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/editTextCol1"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/row1" />
+
+        <EditText
+            android:id="@+id/editTextCol1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:gravity="center"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/editTextRow1"
+            app:layout_constraintTop_toBottomOf="@id/col1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/matrixBLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matrixALayout">
+
+        <TextView
+            android:id="@+id/row2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="Row_B"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/editTextRow2"
+            app:layout_constraintEnd_toStartOf="@+id/col2"
+            app:layout_constraintHorizontal_weight="1"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/col2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:text="Col_B"
+            android:textColor="#000000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/editTextCol2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/row2"
+
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextRow2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:gravity="center"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/editTextCol2"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+
+            app:layout_constraintTop_toBottomOf="@id/row2" />
+
+        <EditText
+            android:id="@+id/editTextCol2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:gravity="center"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@+id/editTextRow2"
+            app:layout_constraintTop_toBottomOf="@id/col2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

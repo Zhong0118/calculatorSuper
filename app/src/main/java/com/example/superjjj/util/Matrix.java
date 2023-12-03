@@ -2,11 +2,11 @@ package com.example.superjjj.util;
 
 public class Matrix {
 
-    public static int[][] getTranspose(int[][] matrix) {
+    public static double[][] getTranspose(double[][] matrix) {
         int rows = matrix.length;
         int cols = matrix[0].length;
 
-        int[][] result = new int[cols][rows];
+        double[][] result = new double[cols][rows];
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -19,12 +19,13 @@ public class Matrix {
 
     /**
      * 加法
+     *
      * @param aMatrix
      * @param bMatrix
      * @return
      * @throws IllegalArgumentException
      */
-    public static int[][] add(int[][] aMatrix, int[][] bMatrix) throws IllegalArgumentException {
+    public static double[][] add(double[][] aMatrix, double[][] bMatrix) throws IllegalArgumentException {
         // 添加维度检查
         if (aMatrix.length != bMatrix.length || aMatrix[0].length != bMatrix[0].length) {
             throw new IllegalArgumentException("矩阵维度不匹配");
@@ -32,7 +33,7 @@ public class Matrix {
 
         int rows = aMatrix.length;
         int cols = aMatrix[0].length;
-        int[][] result = new int[rows][cols];
+        double[][] result = new double[rows][cols];
 
         // 执行加法操作
         for (int i = 0; i < rows; i++) {
@@ -46,12 +47,13 @@ public class Matrix {
 
     /**
      * 减法
+     *
      * @param aMatrix
      * @param bMatrix
      * @return
      * @throws IllegalArgumentException
      */
-    public static int[][] minus(int[][] aMatrix, int[][] bMatrix) throws IllegalArgumentException {
+    public static double[][] minus(double[][] aMatrix, double[][] bMatrix) throws IllegalArgumentException {
         // 添加维度检查
         if (aMatrix.length != bMatrix.length || aMatrix[0].length != bMatrix[0].length) {
             throw new IllegalArgumentException("矩阵维度不匹配");
@@ -59,7 +61,7 @@ public class Matrix {
 
         int rows = aMatrix.length;
         int cols = aMatrix[0].length;
-        int[][] result = new int[rows][cols];
+        double[][] result = new double[rows][cols];
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
@@ -72,12 +74,13 @@ public class Matrix {
 
     /**
      * 乘法
+     *
      * @param aMatrix
      * @param bMatrix
      * @return
      * @throws IllegalArgumentException
      */
-    public static int[][] multiply(int[][] aMatrix, int[][] bMatrix) throws IllegalArgumentException {
+    public static double[][] multiply(double[][] aMatrix, double[][] bMatrix) throws IllegalArgumentException {
         int aRows = aMatrix.length;
         int aCols = aMatrix[0].length;
 
@@ -88,7 +91,7 @@ public class Matrix {
             throw new IllegalArgumentException("矩阵无法相乘，维度不匹配");
         }
 
-        int[][] result = new int[aRows][bCols];
+        double[][] result = new double[aRows][bCols];
 
         for (int i = 0; i < aRows; i++) {
             for (int j = 0; j < bCols; j++) {
@@ -103,84 +106,101 @@ public class Matrix {
 
     /**
      * 行列式
+     *
      * @param matrix
      * @return
      */
-    public static int determinant(int[][] matrix) {
-        int result = 0;
+    public static double determinant(double[][] matrix) {
+        int n = matrix.length;
+        double[][] lu = new double[n][n];
+        int swaps = 0;
 
-        // 单一元素的矩阵
-        if (matrix.length == 1) {
-            result = matrix[0][0];
-            return result;
+        // 将输入矩阵复制到lu矩阵中
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                lu[i][j] = matrix[i][j];
+            }
         }
 
-        // 2x2 矩阵
-        if (matrix.length == 2) {
-            result = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
-            return result;
-        }
-
-        // 更大的矩阵
-        for (int i = 0; i < matrix[0].length; i++) {
-            int[][] temp = new int[matrix.length - 1][matrix[0].length - 1];
-
-            for (int j = 1; j < matrix.length; j++) {
-                for (int k = 0; k < matrix[0].length; k++) {
-                    if (k < i) {
-                        temp[j - 1][k] = matrix[j][k];
-                    } else if (k > i) {
-                        temp[j - 1][k - 1] = matrix[j][k];
-                    }
+        // 进行LU分解
+        for (int k = 0; k < n; k++) {
+            // 部分主元选取
+            int pivot = k;
+            for (int i = k + 1; i < n; i++) {
+                if (Math.abs(lu[i][k]) > Math.abs(lu[pivot][k])) {
+                    pivot = i;
                 }
             }
 
-            result += matrix[0][i] * Math.pow(-1, (int) i) * determinant(temp);
+            // 交换行
+            if (pivot != k) {
+                double[] temp = lu[pivot];
+                lu[pivot] = lu[k];
+                lu[k] = temp;
+                swaps++;
+            }
+
+            // 检查奇异矩阵
+            if (Math.abs(lu[k][k]) < 1e-9) {
+                return 0;
+            }
+
+            // 分解步骤
+            for (int i = k + 1; i < n; i++) {
+                lu[i][k] /= lu[k][k];
+                for (int j = k + 1; j < n; j++) {
+                    lu[i][j] -= lu[i][k] * lu[k][j];
+                }
+            }
         }
 
-        return result;
+        // 计算行列式
+        double det = (swaps % 2 == 0) ? 1 : -1;
+        for (int i = 0; i < n; i++) {
+            det *= lu[i][i];
+        }
+
+        return det;
     }
 
     /**
      * 伴随矩阵
+     *
      * @param matrix
      * @return
      */
-    public static int[][] adjugate(int[][] matrix) {
-        int[][] adj = new int[matrix.length][matrix.length];
+    public static double[][] adjugate(double[][] matrix) {
+        int n = matrix.length;
+        double[][] adj = new double[n][n];
+        double[][] cofactorMatrix = new double[n - 1][n - 1];
 
-        if (matrix.length == 1) {
+        if (n == 1) {
             adj[0][0] = 1;
             return adj;
         }
 
-        int sign = 1;
-        int[][] temp = new int[matrix.length][matrix.length];
-
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix.length; j++) {
-                // 获取余子矩阵
-                getCofactor(matrix, temp, i, j, matrix.length);
-
-                // 计算余子矩阵的行列式
-                sign = ((i + j) % 2 == 0) ? 1 : -1;
-                adj[j][i] = (sign) * (determinant(temp));
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                getCofactor(matrix, cofactorMatrix, i, j, n);
+                int sign = ((i + j) % 2 == 0) ? 1 : -1;
+                adj[i][j] = sign * determinant(cofactorMatrix);
             }
         }
 
-        return adj;
+        return getTranspose(adj); // 使用已有的转置方法
     }
 
 
     /**
      * 代数余子式
+     *
      * @param matrix
      * @param temp
      * @param p
      * @param q
      * @param n
      */
-    private static void getCofactor(int[][] matrix, int[][] temp, int p, int q, int n) {
+    private static void getCofactor(double[][] matrix, double[][] temp, int p, int q, int n) {
         int i = 0, j = 0;
 
         for (int row = 0; row < n; row++) {
@@ -199,11 +219,12 @@ public class Matrix {
 
     /**
      * 对偶矩阵
+     *
      * @param vector
      * @return
      */
-    public static int[][] dual(int[] vector) {
-        int[][] result = new int[3][3];
+    public static double[][] dual(double[] vector) {
+        double[][] result = new double[3][3];
 
         result[0][0] = 0;
         result[0][1] = -vector[2];
@@ -220,60 +241,66 @@ public class Matrix {
 
     /**
      * 秩
+     *
      * @param matrix
      * @return
      */
-    public static int rankOfMatrix(int[][] matrix) {
-        int rank = matrix[0].length;
-        int rows = matrix.length;
+    public static int rankOfMatrix(double[][] matrix) {
+        int m = matrix.length; // number of rows
+        int n = matrix[0].length; // number of columns
+        int rank = 0;
+        boolean[] rowSelected = new boolean[m];
 
-        double[][] tempMatrix = new double[rows][rank];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < rank; j++) {
-                tempMatrix[i][j] = matrix[i][j];
+        for (int col = 0; col < n; col++) {
+            int i;
+            for (i = 0; i < m; i++) {
+                if (!rowSelected[i] && Math.abs(matrix[i][col]) > 1E-10) {
+                    break;
+                }
             }
-        }
 
-        for (int row = 0; row < rank; row++) {
-            if (tempMatrix[row][row] != 0) {
-                for (int col = 0; col < rows; col++) {
-                    if (col != row) {
-                        double mult = tempMatrix[col][row] / tempMatrix[row][row];
-                        for (int i = 0; i < rank; i++)
-                            tempMatrix[col][i] -= mult * tempMatrix[row][i];
+            if (i < m) {
+                rank++;
+                rowSelected[i] = true;
+                for (int k = 0; k < m; k++) {
+                    if (k != i) {
+                        double factor = matrix[k][col] / matrix[i][col];
+                        for (int j = col; j < n; j++) {
+                            matrix[k][j] -= factor * matrix[i][j];
+                        }
                     }
                 }
-            } else {
-                boolean reduce = true;
-
-                for (int i = row + 1; i < rows; i++) {
-                    if (tempMatrix[i][row] != 0) {
-                        swap(tempMatrix, row, i, rank);
-                        reduce = false;
-                        break;
-                    }
-                }
-
-                if (reduce) {
-                    rank--;
-
-                    for (int i = 0; i < rows; i++)
-                        tempMatrix[i][row] = tempMatrix[i][rank];
-                }
-
-                row--;
             }
         }
-
         return rank;
     }
 
-    private static void swap(double[][] matrix, int row1, int row2, int col) {
-        for (int i = 0; i < col; i++) {
-            double temp = matrix[row1][i];
-            matrix[row1][i] = matrix[row2][i];
-            matrix[row2][i] = temp;
+    public static double[][] inverse(double[][] matrix) throws IllegalArgumentException {
+        double det = determinant(matrix);
+        if (Math.abs(det) < 1e-9) {
+            double[][] a = {{0}};
+            return a;
         }
+
+        double[][] adj = adjugate(matrix);
+        return multiplyByConstant(adj, 1.0 / det);
+    }
+
+    /**
+     * 矩阵乘以常数
+     *
+     * @param matrix
+     * @param constant
+     * @return
+     */
+    private static double[][] multiplyByConstant(double[][] matrix, double constant) {
+        double[][] result = new double[matrix.length][matrix[0].length];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                result[i][j] = matrix[i][j] * constant;
+            }
+        }
+        return result;
     }
 
 

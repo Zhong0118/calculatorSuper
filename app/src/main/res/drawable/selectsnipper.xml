@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 当项被选中时的背景 -->
+    <item android:state_selected="true" android:drawable="@color/backgroundColor8"/>
+    <!-- 默认背景 -->
+    <item android:drawable="@color/snipper1"/>
+</selector>

@@ -31,5 +31,9 @@
     <color name="backgroundColor2048">#4B0082</color>
     <color name="backgroundColorBiggerThan2048">#B2000000</color>
 
+    <color name="snipper1">#F1E9CE</color>
+
+
+
     <color name="btnColor">#cdc1b5</color>
 </resources>

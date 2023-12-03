@@ -5,4 +5,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="tile_margin">6dp</dimen>
     <dimen name="padding">8dp</dimen>
+    <dimen name="divider_height">1dp</dimen>
+    <dimen name="divider_margin_top">3sp</dimen>
+    <dimen name="divider_margin_bottom">4sp</dimen>
 </resources>
