@@ -29,9 +29,7 @@ public class Calculator {
 
         expression = stringBuilder.toString();
 
-        expression = expression.replace(" ", "");                 //去掉expression中的所有空格
-        expression = expression.replace("π", String.valueOf(Math.PI));          //替换π
-        expression = expression.replace("e", String.valueOf(Math.exp(1)));      //替换自然指数e
+        expression = expression.replace(" ", "");
 
         basicLogical = new BasicLogical();
 

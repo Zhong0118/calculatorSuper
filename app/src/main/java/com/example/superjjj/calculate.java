@@ -318,7 +318,6 @@ public class calculate extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // 这里你可以初始化视图和设置监听器
-        // 例如：
         drawerLayout = view.findViewById(R.id.drawer_layout);
         historyListView = view.findViewById(R.id.historyListView);
         historyAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, historyList);
@@ -605,7 +604,6 @@ public class calculate extends Fragment {
                     input.setText(expression);
                 } else {
                     ToastUtil.showShort(getActivity(), "不能这样加百分号");
-
                 }
             }
         });
